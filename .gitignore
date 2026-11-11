@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+
+# Build artifacts
+threatpath/frontend-app/dist/
+.DS_Store
+Thumbs.db
+
+# Screenshots & temp logs
+screen_*.png
+live_view.png
+*.log
