@@ -7,10 +7,16 @@ __pycache__/
 env/
 venv/
 
-# Build artifacts
-threatpath/frontend-app/dist/
 .DS_Store
 Thumbs.db
+
+# Documentation binaries, presentations & images
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.pptx
+*.ppt
 
 # Screenshots & temp logs
 screen_*.png

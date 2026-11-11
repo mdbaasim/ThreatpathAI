@@ -227,9 +227,29 @@ async def stream_live_bus():
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 # Mount frontend production build
-dist_path = os.path.join(os.path.dirname(__file__), "..", "frontend-app", "dist")
-if os.path.exists(dist_path):
-    app.mount("/assets", StaticFiles(directory=os.path.join(dist_path, "assets")), name="assets")
+# Locate frontend production build
+dist_candidates = [
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend-app", "dist")),
+    os.path.abspath(os.path.join(os.getcwd(), "threatpath", "frontend-app", "dist")),
+    os.path.abspath(os.path.join(os.getcwd(), "frontend-app", "dist")),
+    os.path.abspath(os.path.join(os.getcwd(), "dist")),
+]
+
+dist_path = None
+for p in dist_candidates:
+    if os.path.exists(p) and os.path.exists(os.path.join(p, "index.html")):
+        dist_path = p
+        break
+
+if dist_path:
+    assets_dir = os.path.join(dist_path, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/")
+    def serve_index():
+        index_file = os.path.join(dist_path, "index.html")
+        return FileResponse(index_file)
 
     @app.get("/{full_path:path}")
     def serve_frontend(full_path: str):
@@ -238,6 +258,14 @@ if os.path.exists(dist_path):
             return FileResponse(requested_file)
         index_file = os.path.join(dist_path, "index.html")
         return FileResponse(index_file)
+else:
+    @app.get("/")
+    def no_dist():
+        return {
+            "status": "ThreatPath Backend Active",
+            "message": "Frontend dist/index.html not found on server path",
+            "searched_paths": dist_candidates
+        }
 
 if __name__ == "__main__":
     import uvicorn
