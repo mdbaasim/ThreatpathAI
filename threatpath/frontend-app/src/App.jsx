@@ -384,7 +384,7 @@ export default function App() {
     : (TIME_DATA[timeRange] || TIME_DATA['6M']);
 
   return (
-    <div className={`h-screen w-screen ${isLight ? 'theme-light bg-slate-50 text-slate-900' : 'bg-[#0a0910] text-[#f6f4fa]'} flex flex-row overflow-hidden select-none relative font-sans`}>
+    <div className={`h-screen w-screen ${isLight ? 'theme-light bg-slate-50 text-slate-900' : 'bg-[#0a0910] text-[#f6f4fa]'} flex flex-row overflow-hidden relative font-sans`}>
       
       {/* 3D Ambient Lighting Background */}
       <div className="bg-3d-ambient">
@@ -401,10 +401,10 @@ export default function App() {
           <div className={`max-w-xl w-full flex flex-col items-center gap-6 p-8 rounded-2xl ${isLight ? 'bg-white shadow-2xl border border-slate-200' : 'bg-[#151022] border border-[rgba(255,255,255,0.07)]'}`}>
             
             <div>
-              <h1 className={`text-4xl font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight`}>
+              <h1 className={`text-4xl font-bold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight leading-tight`}>
                 ThreatPath AI
               </h1>
-              <p className={`text-xs font-extrabold ${isLight ? 'text-indigo-700' : 'text-purple-300'} mt-2 uppercase tracking-wider`}>
+              <p className={`text-xs font-semibold ${isLight ? 'text-indigo-700' : 'text-purple-300'} mt-2 uppercase tracking-wider`}>
                 Automotive Cybersecurity Verification Platform
               </p>
             </div>
@@ -412,12 +412,12 @@ export default function App() {
             {/* Live Calibration Stats */}
             <div className="grid grid-cols-2 gap-3 w-full text-left">
               <div className={`p-3.5 rounded-xl ${isLight ? 'bg-slate-50 border border-slate-200' : 'bg-[#151022] border border-[rgba(255,255,255,0.07)]'}`}>
-                <span className={`text-[11px] font-bold ${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} block uppercase`}>Network Standard</span>
-                <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-extrabold text-sm num-clean`}>CAN-HS 500k & Ethernet</strong>
+                <span className={`text-[11px] font-medium ${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} block uppercase tracking-wider`}>Network Standard</span>
+                <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-semibold text-sm num-clean mt-0.5 block`}>CAN-HS 500k & Ethernet</strong>
               </div>
               <div className={`p-3.5 rounded-xl ${isLight ? 'bg-slate-50 border border-slate-200' : 'bg-[#151022] border border-[rgba(255,255,255,0.07)]'}`}>
-                <span className={`text-[11px] font-bold ${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} block uppercase`}>Safety Baseline</span>
-                <strong className={`${isLight ? 'text-rose-700' : 'text-pink-300'} font-extrabold text-sm num-clean`}>ASIL-D Target Node (vcan0)</strong>
+                <span className={`text-[11px] font-medium ${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} block uppercase tracking-wider`}>Safety Baseline</span>
+                <strong className={`${isLight ? 'text-rose-700' : 'text-pink-300'} font-semibold text-sm num-clean mt-0.5 block`}>ASIL-D Target Node (vcan0)</strong>
               </div>
             </div>
 
@@ -429,16 +429,16 @@ export default function App() {
                   style={{ width: `${bootProgress}%` }}
                 ></div>
               </div>
-              <div className={`flex justify-between items-center text-xs font-bold ${isLight ? 'text-slate-600' : 'text-[#94a3b8]'}`}>
+              <div className={`flex justify-between items-center text-xs font-medium ${isLight ? 'text-slate-600' : 'text-[#94a3b8]'}`}>
                 <span>Binding Virtual SocketCAN (vcan0)...</span>
-                <span className={`num-clean ${isLight ? 'text-indigo-700 font-extrabold' : 'text-purple-300'}`}>{bootProgress}%</span>
+                <span className={`num-clean ${isLight ? 'text-indigo-700 font-semibold' : 'text-purple-300 font-semibold'}`}>{bootProgress}%</span>
               </div>
             </div>
 
             {/* Instant Launch Action */}
             <button
               onClick={() => setShowHomeLaunch(false)}
-              className={`mt-2 px-8 py-3 rounded-full ${isLight ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md' : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white shadow-lg shadow-purple-900/30'} text-xs font-extrabold flex items-center gap-2 cursor-pointer transition uppercase tracking-wide`}
+              className={`mt-2 px-8 py-3 rounded-full ${isLight ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md' : 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white shadow-lg shadow-purple-900/30'} text-xs font-semibold flex items-center gap-2 cursor-pointer transition uppercase tracking-wider leading-none`}
             >
               <span>Launch Dashboard Console</span>
               <ArrowRight className="w-4 h-4" />
@@ -463,7 +463,7 @@ export default function App() {
             {!sidebarCollapsed && (
               <button 
                 onClick={() => setShowHomeLaunch(true)}
-                className={`font-extrabold text-xl ${isLight ? 'text-slate-900 hover:text-indigo-600' : 'text-white hover:text-purple-300'} tracking-tight transition text-left cursor-pointer`}
+                className={`font-bold text-xl ${isLight ? 'text-slate-900 hover:text-indigo-600' : 'text-white hover:text-purple-300'} tracking-tight transition text-left cursor-pointer`}
                 title="View ThreatPath AI Home"
               >
                 ThreatPath
@@ -496,10 +496,10 @@ export default function App() {
                   key={item.id}
                   onClick={() => setActiveNav(item.id)}
                   title={sidebarCollapsed ? item.label : undefined}
-                  className={`flex items-center gap-3.5 px-3 py-2.5 text-xs font-bold transition cursor-pointer rounded-xl ${
+                  className={`flex items-center gap-3 px-3 py-2.5 text-xs transition cursor-pointer rounded-xl leading-normal ${
                     isActive 
-                      ? (isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700 font-extrabold shadow-sm' : 'nav-item-active')
-                      : (isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' : 'text-[#9f96ad] hover:text-white hover:bg-[#1a1526]')
+                      ? (isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700 font-semibold shadow-sm' : 'nav-item-active font-semibold')
+                      : (isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-[#9f96ad] hover:text-white hover:bg-[#1a1526] font-medium')
                   } ${sidebarCollapsed ? 'justify-center px-0' : ''}`}
                 >
                   <Icon className={`w-4 h-4 shrink-0 ${
@@ -519,10 +519,10 @@ export default function App() {
           <button
             onClick={() => setActiveNav('standards')}
             title={sidebarCollapsed ? "Standards" : undefined}
-            className={`flex items-center gap-3.5 px-3 py-2 text-xs font-bold transition cursor-pointer rounded-xl ${
+            className={`flex items-center gap-3 px-3 py-2 text-xs transition cursor-pointer rounded-xl leading-normal ${
               activeNav === 'standards' 
-                ? (isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700 font-extrabold shadow-sm' : 'nav-item-active')
-                : (isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' : 'text-[#9f96ad] hover:text-white hover:bg-[#1a1526]')
+                ? (isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700 font-semibold shadow-sm' : 'nav-item-active font-semibold')
+                : (isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-[#9f96ad] hover:text-white hover:bg-[#1a1526] font-medium')
             } ${sidebarCollapsed ? 'justify-center px-0' : ''}`}
           >
             <BookOpen className={`w-4 h-4 shrink-0 ${activeNav === 'standards' ? (isLight ? 'text-indigo-600' : 'text-indigo-300') : (isLight ? 'text-slate-400' : 'text-[#857b98]')}`} />
@@ -532,10 +532,10 @@ export default function App() {
           <button
             onClick={() => setActiveNav('settings')}
             title={sidebarCollapsed ? "Settings" : undefined}
-            className={`flex items-center gap-3.5 px-3 py-2 text-xs font-bold transition cursor-pointer rounded-xl ${
+            className={`flex items-center gap-3 px-3 py-2 text-xs transition cursor-pointer rounded-xl leading-normal ${
               activeNav === 'settings' 
-                ? (isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700 font-extrabold shadow-sm' : 'nav-item-active')
-                : (isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' : 'text-[#9f96ad] hover:text-white hover:bg-[#1a1526]')
+                ? (isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700 font-semibold shadow-sm' : 'nav-item-active font-semibold')
+                : (isLight ? 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 font-medium' : 'text-[#9f96ad] hover:text-white hover:bg-[#1a1526] font-medium')
             } ${sidebarCollapsed ? 'justify-center px-0' : ''}`}
           >
             <Settings className={`w-4 h-4 shrink-0 ${activeNav === 'settings' ? (isLight ? 'text-indigo-600' : 'text-indigo-300') : (isLight ? 'text-slate-400' : 'text-[#857b98]')}`} />
@@ -554,7 +554,7 @@ export default function App() {
         <header className={`h-[68px] border-b ${isLight ? 'border-slate-200 bg-white/90 shadow-sm' : 'border-[rgba(255,255,255,0.07)] bg-[#110e19]/80'} backdrop-blur-2xl px-6 flex items-center justify-between shrink-0 relative`}>
           
           <div className="flex items-center">
-            <h1 className={`text-xl font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight`}>
+            <h1 className={`text-xl font-bold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight leading-tight`}>
               {activeNav === 'dashboard' && 'Threat Modeling & Security Validation'}
               {activeNav === 'topology' && 'ECU Architecture & Network Topology'}
               {activeNav === 'threats' && 'STRIDE & ISO 21434 Threat Matrix'}
@@ -566,23 +566,23 @@ export default function App() {
           </div>
 
           {/* Real-Time Live Bus Status Capsule - CENTERED ACROSS ALL PAGES */}
-          <div className={`hidden md:flex items-center gap-3 px-3.5 py-1.5 rounded-full ${isLight ? 'bg-white border border-slate-300 text-slate-800 shadow-sm' : 'bg-[#181326] border border-purple-500/30 text-white shadow-lg shadow-purple-950/25'} text-xs font-bold absolute left-1/2 -translate-x-1/2 pointer-events-auto`}>
-            <span className={`flex items-center gap-1.5 ${isLight ? 'text-emerald-700' : 'text-emerald-400'} font-extrabold num-clean`}>
+          <div className={`hidden md:flex items-center gap-3 px-3.5 py-1.5 rounded-full ${isLight ? 'bg-white border border-slate-300 text-slate-800 shadow-sm' : 'bg-[#181326] border border-purple-500/30 text-white shadow-lg shadow-purple-950/25'} text-xs font-medium absolute left-1/2 -translate-x-1/2 pointer-events-auto leading-none`}>
+            <span className={`flex items-center gap-1.5 ${isLight ? 'text-emerald-700' : 'text-emerald-400'} font-semibold num-clean`}>
               <span className={`w-2 h-2 rounded-full ${isLight ? 'bg-emerald-600' : 'bg-emerald-400'} animate-pulse`}></span>
               vcan0 LIVE
             </span>
             <span className={isLight ? 'text-slate-300' : 'text-[#64748b]'}>|</span>
-            <span className={`num-clean font-extrabold ${liveBus.bus_load_pct > 70 ? (isLight ? 'text-rose-700 animate-pulse' : 'text-rose-400 animate-pulse') : (isLight ? 'text-amber-800' : 'text-amber-300')}`}>
+            <span className={`num-clean font-semibold ${liveBus.bus_load_pct > 70 ? (isLight ? 'text-rose-700 animate-pulse' : 'text-rose-400 animate-pulse') : (isLight ? 'text-amber-800' : 'text-amber-300')}`}>
               Load: {liveBus.bus_load_pct}%
             </span>
             <span className={isLight ? 'text-slate-300' : 'text-[#64748b]'}>|</span>
-            <span className={`num-clean font-extrabold ${isLight ? 'text-sky-700' : 'text-cyan-300'}`}>
+            <span className={`num-clean font-semibold ${isLight ? 'text-sky-700' : 'text-cyan-300'}`}>
               {liveBus.frames_per_sec} fps
             </span>
             <span className={isLight ? 'text-slate-300' : 'text-[#64748b]'}>|</span>
             <button 
               onClick={handleToggleLiveSecoc}
-              className={`px-2.5 py-0.5 rounded-full text-[11px] font-extrabold cursor-pointer transition ${
+              className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold cursor-pointer transition leading-none ${
                 liveBus.is_secoc_active 
                   ? (isLight ? 'bg-emerald-50 text-emerald-800 border border-emerald-300' : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40')
                   : (isLight ? 'bg-rose-50 text-rose-800 border border-rose-300' : 'bg-rose-500/20 text-rose-300 border border-rose-500/40')
@@ -597,7 +597,7 @@ export default function App() {
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-extrabold transition cursor-pointer shadow-sm shrink-0 ${
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-semibold transition cursor-pointer shadow-sm shrink-0 leading-none ${
                 isLight
                   ? 'bg-slate-100 hover:bg-slate-200 text-indigo-700 border-indigo-200'
                   : 'bg-[#181426] hover:bg-[#221c36] text-purple-200 border-purple-500/30'
@@ -620,7 +620,7 @@ export default function App() {
             {/* Ask AI Pill */}
             <button
               onClick={() => setShowAiModal(true)}
-              className={`flex items-center gap-2.5 px-4 py-2 rounded-full ${isLight ? 'bg-white hover:bg-slate-50 text-slate-800 border-slate-300 shadow-sm' : 'bg-[#181426] border border-purple-500/30 hover:border-purple-400/60 text-purple-200 hover:text-white shadow-lg shadow-purple-900/10'} border text-xs font-extrabold transition cursor-pointer shrink-0`}
+              className={`flex items-center gap-2.5 px-4 py-2 rounded-full ${isLight ? 'bg-white hover:bg-slate-50 text-slate-800 border-slate-300 shadow-sm' : 'bg-[#181426] border border-purple-500/30 hover:border-purple-400/60 text-purple-200 hover:text-white shadow-lg shadow-purple-900/10'} border text-xs font-semibold transition cursor-pointer shrink-0 leading-none`}
             >
               <Sparkles className={`w-3.5 h-3.5 ${isLight ? 'text-indigo-600' : 'text-purple-400'}`} />
               <span>Ask ThreatPath AI anything</span>
@@ -631,11 +631,11 @@ export default function App() {
 
         {/* Live Simulation Banner */}
         {isAutoDemoRunning && (
-          <div className={`px-6 py-2 ${isLight ? 'bg-indigo-50 border-b border-indigo-200 text-indigo-900' : 'bg-gradient-to-r from-purple-950 via-pink-950 to-purple-950 border-b border-pink-500/40 text-pink-200'} flex items-center justify-between text-xs font-extrabold shrink-0 shadow-sm`}>
+          <div className={`px-6 py-2 ${isLight ? 'bg-indigo-50 border-b border-indigo-200 text-indigo-900' : 'bg-gradient-to-r from-purple-950 via-pink-950 to-purple-950 border-b border-pink-500/40 text-pink-200'} flex items-center justify-between text-xs font-medium shrink-0 shadow-sm`}>
             <span className="flex items-center gap-2.5">
               <Radio className={`w-4 h-4 ${isLight ? 'text-indigo-600' : 'text-pink-400'} animate-spin`} /> {autoDemoStep}
             </span>
-            <span className={`text-[11px] uppercase tracking-wider ${isLight ? 'text-indigo-700' : 'text-pink-300'} font-extrabold`}>Autonomous Jury Demo</span>
+            <span className={`text-[11px] uppercase tracking-wider ${isLight ? 'text-indigo-700' : 'text-pink-300'} font-semibold`}>Autonomous Jury Demo</span>
           </div>
         )}
 
@@ -658,8 +658,8 @@ export default function App() {
                     : 'glass-panel-3d bg-gradient-to-br from-[#0c1a2e]/90 via-[#0e1626]/80 to-[#141b2c]/90 border border-cyan-500/35 shadow-lg shadow-cyan-950/20'
                 }`}>
                   <div className="flex items-center justify-between">
-                    <span className={`text-xs font-extrabold uppercase tracking-wider ${isLight ? 'text-sky-700' : 'text-cyan-300'}`}>ECU Inventory</span>
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-extrabold num-clean ${
+                    <span className={`text-xs font-semibold uppercase tracking-wider ${isLight ? 'text-sky-700' : 'text-cyan-300'}`}>ECU Inventory</span>
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium num-clean leading-none ${
                       isLight ? 'bg-sky-50 text-sky-700 border border-sky-200' : 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/30'
                     }`}>
                       CAN-HS 500k
@@ -667,23 +667,23 @@ export default function App() {
                   </div>
 
                   <div>
-                    <div className={`text-3xl font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight num-clean`}>
-                      6 Nodes <span className={`text-base font-bold ${isLight ? 'text-slate-500' : 'text-[#94a3b8]'}`}>/ 14 PDUs</span>
+                    <div className={`text-3xl font-bold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight num-clean leading-tight`}>
+                      6 Nodes <span className={`text-base font-normal ${isLight ? 'text-slate-500' : 'text-[#94a3b8]'}`}>/ 14 PDUs</span>
                     </div>
-                    <div className={`text-xs font-extrabold ${isLight ? 'text-rose-700' : 'text-rose-400'} mt-1 flex items-center gap-2`}>
+                    <div className={`text-xs font-medium ${isLight ? 'text-rose-700' : 'text-rose-400'} mt-1.5 flex items-center gap-2 leading-normal`}>
                       <span className={`w-2 h-2 rounded-full ${isLight ? 'bg-rose-600' : 'bg-rose-500'} animate-pulse`}></span>
-                      Peak Hazard: <strong className="font-extrabold num-clean">ASIL-D (CVSS 9.9)</strong>
+                      Peak Hazard: <strong className="font-semibold num-clean">ASIL-D (CVSS 9.9)</strong>
                     </div>
                   </div>
 
                   <div className={`pt-3 border-t ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} grid grid-cols-2 gap-2 text-xs`}>
                     <div>
-                      <span className={`${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} block text-xs font-bold`}>Total Packets Processed</span>
-                      <strong className={`${isLight ? 'text-sky-700' : 'text-cyan-200'} font-extrabold num-clean`}>{liveBus.total_frames_sent.toLocaleString()}</strong>
+                      <span className={`${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} block text-xs font-medium leading-normal`}>Total Packets Processed</span>
+                      <strong className={`${isLight ? 'text-sky-700' : 'text-cyan-200'} font-semibold num-clean mt-0.5 block`}>{liveBus.total_frames_sent.toLocaleString()}</strong>
                     </div>
                     <div>
-                      <span className={`${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} block text-xs font-bold`}>Intrusion Alerts</span>
-                      <strong className={`font-extrabold num-clean ${
+                      <span className={`${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} block text-xs font-medium leading-normal`}>Intrusion Alerts</span>
+                      <strong className={`font-semibold num-clean mt-0.5 block ${
                         liveBus.anomalies_detected > 0 
                           ? (isLight ? 'text-rose-700' : 'text-rose-400') 
                           : (isLight ? 'text-emerald-700' : 'text-emerald-400')
@@ -701,10 +701,10 @@ export default function App() {
                     : 'glass-panel-3d bg-gradient-to-b from-[#1c1236]/90 via-[#23153d]/85 to-[#2c1242]/90 border border-purple-500/40 relative overflow-hidden shadow-lg shadow-purple-950/30'
                 }`}>
                   <div>
-                    <h3 className={`text-lg font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight`}>
+                    <h3 className={`text-lg font-semibold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight leading-snug`}>
                       Decisions Powered by Data
                     </h3>
-                    <p className={`text-xs font-extrabold ${isLight ? 'text-indigo-700' : 'text-[#c4b5fd]'} mt-2`}>
+                    <p className={`text-xs font-medium ${isLight ? 'text-indigo-700' : 'text-[#c4b5fd]'} mt-1.5 leading-normal`}>
                       Automated Virtual SocketCAN Penetration Testing
                     </p>
                   </div>
@@ -717,8 +717,8 @@ export default function App() {
                       disabled={isAutoDemoRunning}
                       className={`${
                         isLight 
-                          ? 'w-full py-3 rounded-full text-xs font-extrabold flex items-center justify-center gap-2.5 cursor-pointer active:scale-98 disabled:opacity-50 tracking-wide uppercase bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-600/20' 
-                          : 'btn-ai-glow w-full py-3 rounded-full text-xs font-extrabold flex items-center justify-center gap-2.5 cursor-pointer active:scale-98 disabled:opacity-50 tracking-wide uppercase'
+                          ? 'w-full py-3 rounded-full text-xs font-semibold flex items-center justify-center gap-2.5 cursor-pointer active:scale-98 disabled:opacity-50 tracking-wide uppercase bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-600/20 leading-none' 
+                          : 'btn-ai-glow w-full py-3 rounded-full text-xs font-semibold flex items-center justify-center gap-2.5 cursor-pointer active:scale-98 disabled:opacity-50 tracking-wide uppercase leading-none'
                       }`}
                     >
                       {isAutoDemoRunning ? (
@@ -738,8 +738,8 @@ export default function App() {
                     : 'glass-panel-3d bg-gradient-to-br from-[#2a101f]/90 via-[#1d1226]/80 to-[#181128]/90 border border-rose-500/35 shadow-lg shadow-rose-950/20'
                 }`}>
                   <div className="flex items-center justify-between">
-                    <span className={`text-xs font-extrabold uppercase tracking-wider ${isLight ? 'text-rose-700' : 'text-rose-300'}`}>Target ECU Status</span>
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-extrabold num-clean ${
+                    <span className={`text-xs font-semibold uppercase tracking-wider ${isLight ? 'text-rose-700' : 'text-rose-300'}`}>Target ECU Status</span>
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium num-clean leading-none ${
                       isLight ? 'text-rose-700 bg-rose-50 border border-rose-200' : 'text-rose-300 bg-rose-500/15 border border-rose-500/30'
                     }`}>
                       ASIL-D
@@ -747,11 +747,11 @@ export default function App() {
                   </div>
 
                   <div>
-                    <div className={`text-lg font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                    <div className={`text-lg font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>
                       Braking Controller (ESC)
                     </div>
-                    <div className={`text-xs ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-bold mt-1`}>
-                      Target: <span className={`${isLight ? 'text-slate-900' : 'text-white'} font-extrabold num-clean`}>CAN ID 0x020</span> (Deceleration Solenoid)
+                    <div className={`text-xs ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-normal mt-1 leading-normal`}>
+                      Target: <span className={`${isLight ? 'text-slate-900' : 'text-white'} font-semibold num-clean`}>CAN ID 0x020</span> (Deceleration Solenoid)
                     </div>
                   </div>
 
@@ -759,7 +759,7 @@ export default function App() {
                     <button
                       onClick={() => handleRunTest('THREAT_006', false)}
                       disabled={isSimulating}
-                      className={`flex-1 py-2.5 rounded-xl text-xs font-extrabold transition cursor-pointer flex items-center justify-center gap-1.5 ${
+                      className={`flex-1 py-2.5 rounded-xl text-xs font-semibold transition cursor-pointer flex items-center justify-center gap-1.5 leading-none ${
                         isLight 
                           ? 'bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200' 
                           : 'bg-rose-500/20 hover:bg-rose-500/35 text-rose-300 border border-rose-500/40'
@@ -771,7 +771,7 @@ export default function App() {
                     <button
                       onClick={() => handleRunTest('THREAT_006', true)}
                       disabled={isSimulating}
-                      className={`flex-1 py-2.5 rounded-xl text-xs font-extrabold transition cursor-pointer flex items-center justify-center gap-1.5 ${
+                      className={`flex-1 py-2.5 rounded-xl text-xs font-semibold transition cursor-pointer flex items-center justify-center gap-1.5 leading-none ${
                         isLight 
                           ? 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200' 
                           : 'bg-purple-500/25 hover:bg-purple-500/40 text-purple-200 border border-purple-400/40'
@@ -787,10 +787,10 @@ export default function App() {
               {/* MIDDLE ROW: ACTIVE THREAT TABLE WITH STRICT COLUMN WIDTHS */}
               <div className={`p-6 rounded-2xl flex flex-col gap-4 ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'glass-panel-3d'}`}>
                 <div className={`flex items-center justify-between border-b ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} pb-3`}>
-                  <h2 className={`text-base font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight`}>
+                  <h2 className={`text-base font-semibold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight leading-snug`}>
                     Prioritized Threat Vectors (STRIDE / ISO 21434)
                   </h2>
-                  <span className={`text-xs font-extrabold px-3 py-1 rounded-full num-clean ${
+                  <span className={`text-xs font-medium px-3 py-1 rounded-full num-clean leading-none ${
                     isLight ? 'bg-indigo-50 text-indigo-700 border border-indigo-200' : 'text-purple-300 bg-purple-500/15 border border-purple-500/30'
                   }`}>
                     4 Core Hazards
@@ -800,7 +800,7 @@ export default function App() {
                 <div className="overflow-x-auto w-full">
                   <table className="table-fixed-align w-full text-left text-xs">
                     <thead>
-                      <tr className={`border-b ${isLight ? 'border-slate-200 bg-slate-50 text-slate-700' : 'border-[rgba(255,255,255,0.06)] text-[#cbd5e1]'} uppercase text-[11px] font-extrabold`}>
+                      <tr className={`border-b ${isLight ? 'border-slate-200 bg-slate-50 text-slate-700' : 'border-[rgba(255,255,255,0.06)] text-[#cbd5e1]'} uppercase text-[11px] font-semibold tracking-wider`}>
                         <th className="py-3 px-3 w-[32%]">Threat Scenario</th>
                         <th className="py-3 px-3 w-[22%]">Target Component</th>
                         <th className="py-3 px-3 w-[15%]">STRIDE / CWE</th>
@@ -812,18 +812,18 @@ export default function App() {
                     <tbody className={`divide-y ${isLight ? 'divide-slate-100' : 'divide-[rgba(255,255,255,0.04)]'}`}>
                       {threats.map(t => (
                         <tr key={t.id} className={`${isLight ? 'hover:bg-slate-50/80' : 'hover:bg-[#1a1428]/60'} transition`}>
-                          <td className="py-4 px-3 align-middle">
-                            <span className={`font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} text-sm block leading-snug`}>{t.title}</span>
+                          <td className="py-3.5 px-3 align-middle">
+                            <span className={`font-semibold ${isLight ? 'text-slate-900' : 'text-white'} text-sm block leading-snug`}>{t.title}</span>
                           </td>
-                          <td className={`py-4 px-3 align-middle font-extrabold ${isLight ? 'text-slate-700' : 'text-purple-200'}`}>
+                          <td className={`py-3.5 px-3 align-middle font-medium ${isLight ? 'text-slate-700' : 'text-purple-200'}`}>
                             {t.target}
                           </td>
-                          <td className="py-4 px-3 align-middle font-bold">
-                            <span className={`${isLight ? 'text-slate-800' : 'text-white'} block`}>{t.category}</span>
-                            <span className={`text-[11px] font-extrabold ${isLight ? 'text-indigo-700' : 'text-purple-400'}`}>{t.cwe}</span>
+                          <td className="py-3.5 px-3 align-middle">
+                            <span className={`${isLight ? 'text-slate-800' : 'text-white'} font-medium block leading-tight`}>{t.category}</span>
+                            <span className={`text-[11px] font-medium ${isLight ? 'text-indigo-700' : 'text-purple-400'} mt-0.5 block leading-tight`}>{t.cwe}</span>
                           </td>
-                          <td className="py-4 px-3 align-middle">
-                            <span className={`inline-block px-2.5 py-1 rounded-md font-extrabold num-clean ${
+                          <td className="py-3.5 px-3 align-middle">
+                            <span className={`inline-block px-2.5 py-1 rounded-md font-semibold text-xs num-clean leading-none ${
                               t.severity === 'Critical' 
                                 ? (isLight ? 'bg-rose-50 text-rose-800 border border-rose-200' : 'bg-rose-500/20 text-rose-300 border border-rose-500/30')
                                 : (isLight ? 'bg-amber-50 text-amber-800 border border-amber-200' : 'bg-purple-500/20 text-purple-300 border border-purple-500/30')
@@ -831,25 +831,25 @@ export default function App() {
                               {t.score}
                             </span>
                           </td>
-                          <td className="py-4 px-3 align-middle">
+                          <td className="py-3.5 px-3 align-middle">
                             {t.status === 'Mitigated' ? (
-                              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold whitespace-nowrap ${
+                              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap leading-none ${
                                 isLight ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
                               }`}>
                                 <ShieldCheck className="w-3.5 h-3.5" /> Mitigated
                               </span>
                             ) : (
-                              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold whitespace-nowrap ${
+                              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap leading-none ${
                                 isLight ? 'bg-rose-50 text-rose-800 border border-rose-200' : 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
                               }`}>
                                 <AlertTriangle className="w-3.5 h-3.5" /> Exploit
                               </span>
                             )}
                           </td>
-                          <td className="py-4 px-3 align-middle text-right">
+                          <td className="py-3.5 px-3 align-middle text-right">
                             <button
                               onClick={() => handleRunTest(t.id, t.status !== 'Mitigated')}
-                              className={`px-4 py-1.5 rounded-lg text-xs font-extrabold transition cursor-pointer whitespace-nowrap inline-flex items-center justify-center shrink-0 min-w-[76px] ${
+                              className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer whitespace-nowrap inline-flex items-center justify-center shrink-0 min-w-[76px] leading-none ${
                                 isLight 
                                   ? 'bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300' 
                                   : 'bg-[#1d172e] hover:bg-purple-600/30 text-purple-200 hover:text-white border border-purple-500/30'
@@ -868,12 +868,12 @@ export default function App() {
               {/* BOTTOM ROW: DYNAMIC TELEMETRY CHART */}
               <div className={`p-6 rounded-2xl flex flex-col gap-3 ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'glass-panel-3d'}`}>
                 <div className="flex items-center justify-between">
-                  <h3 className={`text-base font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight`}>
+                  <h3 className={`text-base font-semibold ${isLight ? 'text-slate-900' : 'text-white'} tracking-tight leading-snug`}>
                     Vulnerability Traversal & Bus Telemetry
                   </h3>
                   
                   <div className="flex items-center gap-3">
-                    <span className={`text-xs font-extrabold num-clean ${isLight ? 'text-rose-700' : 'text-pink-400'}`}>
+                    <span className={`text-xs font-semibold num-clean leading-none ${isLight ? 'text-rose-700' : 'text-pink-400'}`}>
                       {currentChartConfig.spike}
                     </span>
                     {/* Time filter pill toggles with LIVE mode */}
@@ -882,9 +882,9 @@ export default function App() {
                         <button
                           key={range}
                           onClick={() => setTimeRange(range)}
-                          className={`px-3 py-1 rounded-full text-xs font-extrabold transition cursor-pointer num-clean ${
+                          className={`px-3 py-1 rounded-full text-xs font-medium transition cursor-pointer num-clean leading-none ${
                             timeRange === range
-                              ? (isLight ? 'bg-indigo-600 text-white shadow-sm' : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md')
+                              ? (isLight ? 'bg-indigo-600 text-white font-semibold shadow-sm' : 'bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold shadow-md')
                               : (isLight ? 'text-slate-600 hover:text-slate-900' : 'text-[#94a3b8] hover:text-white')
                           }`}
                         >
@@ -904,17 +904,17 @@ export default function App() {
                           <stop offset="95%" stopColor={isLight ? "#6366f1" : "#c084fc"} stopOpacity={0.0}/>
                         </linearGradient>
                       </defs>
-                      <XAxis dataKey="name" stroke={isLight ? "#64748b" : "#94a3b8"} fontSize={11} fontWeight={700} tickLine={false} />
-                      <YAxis stroke={isLight ? "#64748b" : "#94a3b8"} fontSize={11} fontWeight={700} tickLine={false} />
+                      <XAxis dataKey="name" stroke={isLight ? "#64748b" : "#94a3b8"} fontSize={11} fontWeight={500} tickLine={false} />
+                      <YAxis stroke={isLight ? "#64748b" : "#94a3b8"} fontSize={11} fontWeight={500} tickLine={false} />
                       <Tooltip
                         content={({ active, payload }) => {
                           if (active && payload && payload.length) {
                             const data = payload[0].payload;
                             return (
                               <div className={`${isLight ? 'bg-white border border-slate-200 text-slate-900 shadow-xl' : 'bg-[#181326] border border-purple-400/40 text-white shadow-2xl'} rounded-xl p-3 text-xs`}>
-                                <div className={`text-[11px] ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-bold num-clean`}>{data.name} {data.event ? `• ${data.event}` : ''}</div>
-                                <div className={`font-extrabold text-sm mt-0.5 num-clean ${isLight ? 'text-slate-900' : 'text-white'}`}>{data.packets} packets/sec</div>
-                                <div className={`${isLight ? 'text-rose-700' : 'text-pink-400'} font-extrabold mt-0.5 num-clean`}>Hazard {data.risk}</div>
+                                <div className={`text-[11px] ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-medium num-clean leading-normal`}>{data.name} {data.event ? `• ${data.event}` : ''}</div>
+                                <div className={`font-semibold text-sm mt-0.5 num-clean leading-tight ${isLight ? 'text-slate-900' : 'text-white'}`}>{data.packets} packets/sec</div>
+                                <div className={`${isLight ? 'text-rose-700' : 'text-pink-400'} font-medium mt-0.5 num-clean leading-normal`}>Hazard {data.risk}</div>
                               </div>
                             );
                           }
@@ -925,7 +925,7 @@ export default function App() {
                         type="monotone"
                         dataKey="packets"
                         stroke={isLight ? "#4f46e5" : "#e879f9"}
-                        strokeWidth={3}
+                        strokeWidth={2.5}
                         fillOpacity={1}
                         fill="url(#chartGradient)"
                         isAnimationActive={false}
@@ -938,18 +938,18 @@ export default function App() {
                 <div className={`pt-3 border-t ${isLight ? 'border-slate-200 text-slate-700' : 'border-[rgba(255,255,255,0.06)] text-white'} flex items-center justify-between text-xs`}>
                   <div className="flex items-center gap-2">
                     <Radio className={`w-4 h-4 ${isLight ? 'text-indigo-600' : 'text-purple-400'}`} />
-                    <span className={`font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>Live Virtual SocketCAN (vcan0):</span>
-                    <span className={`font-bold num-clean ${isLight ? 'text-indigo-700' : 'text-purple-300'}`}>
+                    <span className={`font-semibold ${isLight ? 'text-slate-900' : 'text-white'}`}>Live Virtual SocketCAN (vcan0):</span>
+                    <span className={`font-medium num-clean ${isLight ? 'text-indigo-700' : 'text-purple-300'}`}>
                       {liveBus.is_attack_active 
                         ? (liveBus.is_secoc_active ? "0x020 Attack Dropped by SecOC" : "CAN ID 0x020 Exploit Flooding Bus")
                         : "Nominal Traffic (500 kbps, 11-bit Standard)"}
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className={`${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} font-bold`}>Throughput:</span>
-                    <span className={`font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} num-clean`}>{liveBus.frames_per_sec} fps</span>
-                    <span className={`${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} font-bold`}>Bus Load:</span>
-                    <span className={`font-extrabold num-clean ${
+                    <span className={`${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} font-normal`}>Throughput:</span>
+                    <span className={`font-semibold ${isLight ? 'text-slate-900' : 'text-white'} num-clean`}>{liveBus.frames_per_sec} fps</span>
+                    <span className={`${isLight ? 'text-slate-500' : 'text-[#94a3b8]'} font-normal`}>Bus Load:</span>
+                    <span className={`font-semibold num-clean ${
                       liveBus.bus_load_pct > 70 
                         ? (isLight ? 'text-rose-700' : 'text-rose-400') 
                         : (isLight ? 'text-emerald-700' : 'text-emerald-400')
@@ -969,8 +969,8 @@ export default function App() {
           {activeNav === 'topology' && (
             <div className={`p-6 rounded-2xl flex flex-col gap-6 max-w-[1600px] w-full mx-auto flex-1 ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'glass-panel-3d'}`}>
               <div className={`border-b ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} pb-3 flex items-center justify-between`}>
-                <h2 className={`text-lg font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>ECU Domain Architecture</h2>
-                <span className={`px-3 py-1 rounded-full text-xs font-extrabold num-clean ${
+                <h2 className={`text-lg font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>ECU Domain Architecture</h2>
+                <span className={`px-3 py-1 rounded-full text-xs font-medium num-clean leading-none ${
                   isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700' : 'bg-purple-500/20 border border-purple-500/30 text-purple-300'
                 }`}>
                   3 Partitioned Domains
@@ -1005,15 +1005,15 @@ export default function App() {
                   }
                 ].map((z, idx) => (
                   <div key={idx} className={`p-5 rounded-2xl border ${z.color} flex flex-col gap-3.5`}>
-                    <span className="text-xs font-extrabold uppercase tracking-wider">{z.zone}</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider leading-none">{z.zone}</span>
                     {z.items.map((it, i) => (
                       <div key={i} className={`p-4 rounded-xl ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'bg-[#14101e] border border-[rgba(255,255,255,0.06)]'} flex flex-col gap-1.5`}>
                         <div className="flex items-center justify-between">
-                          <span className={`font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} text-xs`}>{it.name}</span>
-                          <span className={`num-clean text-xs font-extrabold px-2 py-0.5 rounded ${isLight ? 'bg-slate-100 text-slate-800 border border-slate-200' : 'bg-white/10 text-white'}`}>{it.asil}</span>
+                          <span className={`font-semibold ${isLight ? 'text-slate-900' : 'text-white'} text-xs leading-snug`}>{it.name}</span>
+                          <span className={`num-clean text-xs font-semibold px-2 py-0.5 rounded leading-none ${isLight ? 'bg-slate-100 text-slate-800 border border-slate-200' : 'bg-white/10 text-white'}`}>{it.asil}</span>
                         </div>
-                        <div className={`text-xs ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-bold num-clean`}>{it.proto}</div>
-                        <div className={`text-xs font-extrabold ${isLight ? 'text-rose-700' : 'text-pink-400'} mt-1`}>{it.threat}</div>
+                        <div className={`text-xs ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-normal num-clean leading-normal`}>{it.proto}</div>
+                        <div className={`text-xs font-medium ${isLight ? 'text-rose-700' : 'text-pink-400'} mt-1 leading-normal`}>{it.threat}</div>
                       </div>
                     ))}
                   </div>
@@ -1028,8 +1028,8 @@ export default function App() {
           {activeNav === 'threats' && (
             <div className={`p-6 rounded-2xl flex flex-col gap-6 max-w-[1600px] w-full mx-auto flex-1 ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'glass-panel-3d'}`}>
               <div className={`border-b ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} pb-3 flex items-center justify-between`}>
-                <h2 className={`text-lg font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>Full STRIDE & ISO 21434 Matrix</h2>
-                <span className={`px-3 py-1 rounded-full text-xs font-extrabold num-clean ${
+                <h2 className={`text-lg font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>Full STRIDE & ISO 21434 Matrix</h2>
+                <span className={`px-3 py-1 rounded-full text-xs font-medium num-clean leading-none ${
                   isLight ? 'bg-rose-50 border border-rose-200 text-rose-800' : 'bg-rose-500/20 border border-rose-500/30 text-rose-300'
                 }`}>
                   ASIL-D Critical Focus
@@ -1041,26 +1041,26 @@ export default function App() {
                   <div key={t.id} className={`p-5 rounded-2xl ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'bg-[#14101e] border border-[rgba(255,255,255,0.06)]'} flex flex-col justify-between gap-3`}>
                     <div>
                       <div className="flex items-center justify-between">
-                        <span className={`text-xs font-extrabold ${isLight ? 'text-indigo-700' : 'text-purple-300'}`}>{t.cwe}</span>
-                        <span className={`px-2.5 py-0.5 rounded font-extrabold text-xs num-clean ${
+                        <span className={`text-xs font-medium ${isLight ? 'text-indigo-700' : 'text-purple-300'} leading-none`}>{t.cwe}</span>
+                        <span className={`px-2.5 py-0.5 rounded font-semibold text-xs num-clean leading-none ${
                           isLight ? 'bg-rose-50 text-rose-800 border border-rose-200' : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
                         }`}>
                           CVSS {t.score}
                         </span>
                       </div>
-                      <h3 className={`text-base font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} mt-1.5`}>{t.title}</h3>
-                      <div className={`text-xs ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-bold mt-1.5 flex items-center gap-2`}>
-                        <span className={isLight ? 'text-indigo-700' : 'text-purple-300'}>{t.target}</span>
+                      <h3 className={`text-base font-semibold ${isLight ? 'text-slate-900' : 'text-white'} mt-1.5 leading-snug`}>{t.title}</h3>
+                      <div className={`text-xs ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-normal mt-1.5 flex items-center gap-2 leading-normal`}>
+                        <span className={`font-medium ${isLight ? 'text-indigo-700' : 'text-purple-300'}`}>{t.target}</span>
                         <span>•</span>
                         <span>{t.vector}</span>
                       </div>
                     </div>
 
                     <div className={`pt-3 border-t ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} flex items-center justify-between`}>
-                      <span className={`text-xs font-extrabold ${isLight ? 'text-slate-800' : 'text-white'}`}>{t.category}</span>
+                      <span className={`text-xs font-medium ${isLight ? 'text-slate-800' : 'text-white'}`}>{t.category}</span>
                       <button
                         onClick={() => handleRunTest(t.id, t.status !== 'Mitigated')}
-                        className={`px-4 py-1.5 rounded-xl text-xs font-extrabold transition cursor-pointer whitespace-nowrap shrink-0 inline-flex items-center justify-center min-w-[80px] ${
+                        className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 inline-flex items-center justify-center min-w-[80px] leading-none ${
                           isLight 
                             ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm' 
                             : 'bg-purple-600 hover:bg-purple-500 text-white'
@@ -1081,8 +1081,8 @@ export default function App() {
           {activeNav === 'paths' && (
             <div className={`p-6 rounded-2xl flex flex-col gap-6 max-w-[1600px] w-full mx-auto flex-1 ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'glass-panel-3d'}`}>
               <div className={`border-b ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} pb-3 flex items-center justify-between`}>
-                <h2 className={`text-lg font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>NetworkX Lateral Exploit Traversal</h2>
-                <span className={`text-xs font-extrabold px-3 py-1 rounded-full num-clean ${
+                <h2 className={`text-lg font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>NetworkX Lateral Exploit Traversal</h2>
+                <span className={`text-xs font-medium px-3 py-1 rounded-full num-clean leading-none ${
                   isLight ? 'bg-rose-50 border border-rose-200 text-rose-800' : 'text-pink-400 bg-pink-500/15 border border-pink-500/30'
                 }`}>
                   CVSS 9.9 Critical Path
@@ -1090,7 +1090,7 @@ export default function App() {
               </div>
 
               <div className={`p-6 rounded-2xl ${isLight ? 'bg-slate-50 border border-slate-200' : 'bg-[#14101e] border border-[rgba(255,255,255,0.06)]'} flex flex-col gap-5`}>
-                <h3 className={`text-base font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>
+                <h3 className={`text-base font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>
                   Remote Cellular Ingress ➔ Gateway Bridge ➔ Safety-Critical Braking Override
                 </h3>
 
@@ -1102,9 +1102,9 @@ export default function App() {
                   ].map((s, idx) => (
                     <div key={idx} className={`p-5 rounded-xl ${s.color} flex flex-col justify-between`}>
                       <div>
-                        <span className={`text-xs font-extrabold ${s.tagColor} block`}>{s.cwe}</span>
-                        <strong className={`text-sm font-extrabold ${isLight ? 'text-slate-900' : 'text-white'} block mt-1`}>{s.step}</strong>
-                        <p className={`text-xs ${isLight ? 'text-slate-600 font-medium' : 'text-[#cbd5e1] font-bold'} mt-2 leading-relaxed`}>{s.desc}</p>
+                        <span className={`text-xs font-medium ${s.tagColor} block leading-none`}>{s.cwe}</span>
+                        <strong className={`text-sm font-semibold ${isLight ? 'text-slate-900' : 'text-white'} block mt-1 leading-snug`}>{s.step}</strong>
+                        <p className={`text-xs ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-normal mt-2 leading-relaxed`}>{s.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -1120,13 +1120,13 @@ export default function App() {
             <div className={`p-6 rounded-2xl flex flex-col gap-6 max-w-[1600px] w-full mx-auto flex-1 ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'glass-panel-3d'}`}>
               <div className={`border-b ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} pb-3 flex items-center justify-between`}>
                 <div>
-                  <h2 className={`text-lg font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>Live Virtual SocketCAN Hardware Sniffer</h2>
-                  <span className={`text-xs font-bold ${isLight ? 'text-slate-600' : 'text-[#94a3b8]'} mt-0.5 block`}>
+                  <h2 className={`text-lg font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>Live Virtual SocketCAN Hardware Sniffer</h2>
+                  <span className={`text-xs font-normal ${isLight ? 'text-slate-600' : 'text-[#94a3b8]'} mt-0.5 block leading-normal`}>
                     Real-time frame ingestion, frame analysis, and AUTOSAR SecOC cryptographic filtering
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className={`px-3 py-1 rounded-full text-xs font-extrabold num-clean flex items-center gap-2 ${
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium num-clean flex items-center gap-2 leading-none ${
                     isLight ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-300'
                   }`}>
                     <span className={`w-2 h-2 rounded-full ${isLight ? 'bg-emerald-600' : 'bg-emerald-400'} animate-pulse`}></span>
@@ -1140,8 +1140,8 @@ export default function App() {
                 <div className={`p-4 rounded-xl ${
                   isLight ? 'bg-amber-50/70 border border-amber-200' : 'bg-gradient-to-br from-amber-950/30 to-[#14101e] border border-amber-500/35'
                 }`}>
-                  <span className={`text-[11px] font-bold ${isLight ? 'text-amber-800' : 'text-amber-300/80'} block uppercase`}>Bus Load</span>
-                  <strong className={`text-xl font-extrabold num-clean ${
+                  <span className={`text-[11px] font-medium ${isLight ? 'text-amber-800' : 'text-amber-300/80'} block uppercase tracking-wider leading-none`}>Bus Load</span>
+                  <strong className={`text-xl font-bold num-clean mt-1 block leading-tight ${
                     liveBus.bus_load_pct > 70 
                       ? (isLight ? 'text-rose-700' : 'text-rose-400') 
                       : (isLight ? 'text-amber-900' : 'text-amber-300')
@@ -1152,14 +1152,14 @@ export default function App() {
                 <div className={`p-4 rounded-xl ${
                   isLight ? 'bg-sky-50/70 border border-sky-200' : 'bg-gradient-to-br from-cyan-950/30 to-[#14101e] border border-cyan-500/35'
                 }`}>
-                  <span className={`text-[11px] font-bold ${isLight ? 'text-sky-800' : 'text-cyan-300/80'} block uppercase`}>Current Velocity</span>
-                  <strong className={`text-xl font-extrabold ${isLight ? 'text-sky-900' : 'text-cyan-300'} num-clean`}>{liveBus.frames_per_sec} frames/s</strong>
+                  <span className={`text-[11px] font-medium ${isLight ? 'text-sky-800' : 'text-cyan-300/80'} block uppercase tracking-wider leading-none`}>Current Velocity</span>
+                  <strong className={`text-xl font-bold ${isLight ? 'text-sky-900' : 'text-cyan-300'} num-clean mt-1 block leading-tight`}>{liveBus.frames_per_sec} frames/s</strong>
                 </div>
                 <div className={`p-4 rounded-xl ${
                   isLight ? 'bg-emerald-50/70 border border-emerald-200' : 'bg-gradient-to-br from-emerald-950/30 to-[#14101e] border border-emerald-500/35'
                 }`}>
-                  <span className={`text-[11px] font-bold ${isLight ? 'text-emerald-800' : 'text-emerald-300/80'} block uppercase`}>Cryptographic Layer</span>
-                  <strong className={`text-xl font-extrabold ${
+                  <span className={`text-[11px] font-medium ${isLight ? 'text-emerald-800' : 'text-emerald-300/80'} block uppercase tracking-wider leading-none`}>Cryptographic Layer</span>
+                  <strong className={`text-xl font-bold mt-1 block leading-tight ${
                     liveBus.is_secoc_active 
                       ? (isLight ? 'text-emerald-800' : 'text-emerald-400') 
                       : (isLight ? 'text-rose-800' : 'text-rose-400')
@@ -1170,8 +1170,8 @@ export default function App() {
                 <div className={`p-4 rounded-xl ${
                   isLight ? 'bg-rose-50/70 border border-rose-200' : 'bg-gradient-to-br from-rose-950/30 to-[#14101e] border border-rose-500/35'
                 }`}>
-                  <span className={`text-[11px] font-bold ${isLight ? 'text-rose-800' : 'text-rose-300/80'} block uppercase`}>Intrusion Detections</span>
-                  <strong className={`text-xl font-extrabold ${isLight ? 'text-rose-900' : 'text-rose-400'} num-clean`}>{liveBus.anomalies_detected} Alerted</strong>
+                  <span className={`text-[11px] font-medium ${isLight ? 'text-rose-800' : 'text-rose-300/80'} block uppercase tracking-wider leading-none`}>Intrusion Detections</span>
+                  <strong className={`text-xl font-bold ${isLight ? 'text-rose-900' : 'text-rose-400'} num-clean mt-1 block leading-tight`}>{liveBus.anomalies_detected} Alerted</strong>
                 </div>
               </div>
 
@@ -1180,7 +1180,7 @@ export default function App() {
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => handleTriggerLiveAttack(12.0)}
-                    className={`px-4 py-2.5 rounded-xl text-xs font-extrabold transition cursor-pointer flex items-center gap-2 ${
+                    className={`px-4 py-2.5 rounded-xl text-xs font-semibold transition cursor-pointer flex items-center gap-2 leading-none ${
                       isLight 
                         ? 'bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200' 
                         : 'bg-rose-500/25 hover:bg-rose-500/40 text-rose-300 border border-rose-500/40'
@@ -1191,7 +1191,7 @@ export default function App() {
 
                   <button
                     onClick={handleToggleLiveSecoc}
-                    className={`px-4 py-2.5 rounded-xl text-xs font-extrabold border transition cursor-pointer flex items-center gap-2 ${
+                    className={`px-4 py-2.5 rounded-xl text-xs font-semibold border transition cursor-pointer flex items-center gap-2 leading-none ${
                       liveBus.is_secoc_active
                         ? (isLight ? 'bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-emerald-500/25 hover:bg-emerald-500/40 text-emerald-200 border-emerald-400/40')
                         : (isLight ? 'bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border-indigo-300' : 'bg-purple-500/25 hover:bg-purple-500/40 text-purple-200 border-purple-400/40')
@@ -1203,7 +1203,7 @@ export default function App() {
 
                 <button
                   onClick={() => setIsSnifferPaused(!isSnifferPaused)}
-                  className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition cursor-pointer flex items-center gap-2 ${
+                  className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition cursor-pointer flex items-center gap-2 leading-none ${
                     isLight 
                       ? 'bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300' 
                       : 'bg-[#1a1528] hover:bg-[#251e3a] text-[#cbd5e1] border border-[rgba(255,255,255,0.08)]'
@@ -1222,7 +1222,7 @@ export default function App() {
               <div className={`overflow-x-auto rounded-xl border ${isLight ? 'border-slate-200 bg-white shadow-sm' : 'border-[rgba(255,255,255,0.08)] bg-[#0d0a15]'}`}>
                 <table className="table-fixed-align w-full text-left text-xs">
                   <thead>
-                    <tr className={`border-b ${isLight ? 'border-slate-200 bg-slate-50 text-slate-700' : 'border-[rgba(255,255,255,0.08)] bg-[#141020] text-[#94a3b8]'} uppercase text-[11px] font-extrabold`}>
+                    <tr className={`border-b ${isLight ? 'border-slate-200 bg-slate-50 text-slate-700' : 'border-[rgba(255,255,255,0.08)] bg-[#141020] text-[#94a3b8]'} uppercase text-[11px] font-semibold tracking-wider`}>
                       <th className="py-2.5 px-3 w-[12%]">Time (ms)</th>
                       <th className="py-2.5 px-3 w-[12%]">ID</th>
                       <th className="py-2.5 px-3 w-[18%]">Node</th>
@@ -1244,9 +1244,9 @@ export default function App() {
                               : (isLight ? 'hover:bg-slate-50' : 'hover:bg-[#1a1428]/40')
                         }`}
                       >
-                        <td className={`py-2.5 px-3 font-bold ${isLight ? 'text-slate-600' : 'text-[#94a3b8]'} num-clean`}>{pkt.timestamp}</td>
+                        <td className={`py-2.5 px-3 font-normal ${isLight ? 'text-slate-600' : 'text-[#94a3b8]'} num-clean`}>{pkt.timestamp}</td>
                         <td className="py-2.5 px-3">
-                          <span className={`px-2 py-0.5 rounded text-xs font-extrabold num-clean ${
+                          <span className={`px-2 py-0.5 rounded text-xs font-semibold num-clean leading-none ${
                             pkt.can_id === '0x020' 
                               ? (isLight ? 'bg-rose-100 text-rose-800 border border-rose-300' : 'bg-rose-500/20 text-rose-300 border border-rose-500/40') 
                               : (isLight ? 'bg-indigo-100 text-indigo-800 border border-indigo-300' : 'bg-purple-500/20 text-purple-300 border border-purple-500/30')
@@ -1254,15 +1254,15 @@ export default function App() {
                             {pkt.can_id}
                           </span>
                         </td>
-                        <td className={`py-2.5 px-3 font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>{pkt.ecu}</td>
-                        <td className={`py-2.5 px-3 font-extrabold ${isLight ? 'text-slate-600' : 'text-[#94a3b8]'} num-clean`}>{pkt.dlc}</td>
-                        <td className="py-2.5 px-3 font-mono text-[11px] font-bold tracking-wider">
+                        <td className={`py-2.5 px-3 font-semibold ${isLight ? 'text-slate-900' : 'text-white'}`}>{pkt.ecu}</td>
+                        <td className={`py-2.5 px-3 font-normal ${isLight ? 'text-slate-600' : 'text-[#94a3b8]'} num-clean`}>{pkt.dlc}</td>
+                        <td className="py-2.5 px-3 font-mono text-xs font-medium tracking-wide">
                           <span className={`${isLight ? 'text-indigo-950 bg-slate-100 px-2 py-0.5 rounded' : 'text-pink-300'}`}>
                             {pkt.data}
                           </span>
                         </td>
                         <td className="py-2.5 px-3">
-                          <span className={`text-[11px] font-extrabold ${
+                          <span className={`text-[11px] font-medium leading-none ${
                             pkt.secoc.includes('MAC_MISMATCH') || pkt.secoc === 'NO_MAC' 
                               ? (isLight ? 'text-rose-700' : 'text-rose-400') 
                               : (isLight ? 'text-emerald-700' : 'text-emerald-400')
@@ -1271,7 +1271,7 @@ export default function App() {
                           </span>
                         </td>
                         <td className="py-2.5 px-3 text-right">
-                          <span className={`px-2 py-0.5 rounded text-[11px] font-extrabold ${
+                          <span className={`px-2 py-0.5 rounded text-[11px] font-semibold leading-none ${
                             pkt.status === 'EXPLOIT' 
                               ? (isLight ? 'bg-rose-100 text-rose-800 border border-rose-300' : 'bg-rose-500 text-slate-950') 
                               : pkt.status === 'DEFENDED' 
@@ -1295,8 +1295,8 @@ export default function App() {
           {activeNav === 'standards' && (
             <div className={`p-6 rounded-2xl flex flex-col gap-6 max-w-[1600px] w-full mx-auto flex-1 ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'glass-panel-3d'}`}>
               <div className={`border-b ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} pb-3 flex items-center justify-between`}>
-                <h2 className={`text-lg font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>Regulatory Standards & Compliance</h2>
-                <span className={`px-3 py-1 rounded-full text-xs font-extrabold num-clean ${
+                <h2 className={`text-lg font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>Regulatory Standards & Compliance</h2>
+                <span className={`px-3 py-1 rounded-full text-xs font-medium num-clean leading-none ${
                   isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700' : 'bg-purple-500/20 border border-purple-500/30 text-purple-300'
                 }`}>
                   Automotive Cybersecurity Mandates
@@ -1311,8 +1311,8 @@ export default function App() {
                   { title: "ISO 14229-1:2020 (UDS)", spec: "SecurityAccess Service 0x27 asymmetric challenge-response and firmware flashing verification." }
                 ].map((s, i) => (
                   <div key={i} className={`p-5 rounded-xl ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'bg-[#14101e] border border-[rgba(255,255,255,0.06)]'}`}>
-                    <strong className={`font-extrabold text-sm block ${isLight ? 'text-slate-900' : 'text-white'}`}>{s.title}</strong>
-                    <p className={`${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} mt-2 font-bold leading-relaxed`}>{s.spec}</p>
+                    <strong className={`font-semibold text-sm block leading-snug ${isLight ? 'text-slate-900' : 'text-white'}`}>{s.title}</strong>
+                    <p className={`${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} mt-2 font-normal leading-relaxed`}>{s.spec}</p>
                   </div>
                 ))}
               </div>
@@ -1325,8 +1325,8 @@ export default function App() {
           {activeNav === 'settings' && (
             <div className={`p-6 rounded-2xl flex flex-col gap-6 max-w-[1600px] w-full mx-auto flex-1 ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'glass-panel-3d'}`}>
               <div className={`border-b ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} pb-3 flex items-center justify-between`}>
-                <h2 className={`text-lg font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>System Configuration</h2>
-                <span className={`px-3 py-1 rounded-full text-xs font-extrabold num-clean ${
+                <h2 className={`text-lg font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>System Configuration</h2>
+                <span className={`px-3 py-1 rounded-full text-xs font-medium num-clean leading-none ${
                   isLight ? 'bg-indigo-50 border border-indigo-200 text-indigo-700' : 'bg-purple-500/20 border border-purple-500/30 text-purple-300'
                 }`}>
                   Simulation Parameters
@@ -1335,26 +1335,26 @@ export default function App() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div className={`p-5 rounded-xl ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'bg-[#14101e] border border-[rgba(255,255,255,0.06)]'} flex flex-col gap-3`}>
-                  <span className={`font-extrabold text-sm ${isLight ? 'text-slate-900' : 'text-white'}`}>Virtual Bus Interface</span>
-                  <div className={`flex justify-between py-1.5 border-b ${isLight ? 'border-slate-100 text-slate-600' : 'border-[rgba(255,255,255,0.04)] text-[#cbd5e1]'} font-bold`}>
+                  <span className={`font-semibold text-sm ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>Virtual Bus Interface</span>
+                  <div className={`flex justify-between py-1.5 border-b ${isLight ? 'border-slate-100 text-slate-600' : 'border-[rgba(255,255,255,0.04)] text-[#cbd5e1]'} font-normal`}>
                     <span>Interface</span>
-                    <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-extrabold num-clean`}>vcan0</strong>
+                    <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-semibold num-clean`}>vcan0</strong>
                   </div>
-                  <div className={`flex justify-between py-1.5 ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-bold`}>
+                  <div className={`flex justify-between py-1.5 ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-normal`}>
                     <span>Baud Rate</span>
-                    <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-extrabold num-clean`}>500 kbps (CAN-HS)</strong>
+                    <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-semibold num-clean`}>500 kbps (CAN-HS)</strong>
                   </div>
                 </div>
 
                 <div className={`p-5 rounded-xl ${isLight ? 'bg-white border border-slate-200 shadow-sm' : 'bg-[#14101e] border border-[rgba(255,255,255,0.06)]'} flex flex-col gap-3`}>
-                  <span className={`font-extrabold text-sm ${isLight ? 'text-slate-900' : 'text-white'}`}>AUTOSAR SecOC Profile</span>
-                  <div className={`flex justify-between py-1.5 border-b ${isLight ? 'border-slate-100 text-slate-600' : 'border-[rgba(255,255,255,0.04)] text-[#cbd5e1]'} font-bold`}>
+                  <span className={`font-semibold text-sm ${isLight ? 'text-slate-900' : 'text-white'} leading-snug`}>AUTOSAR SecOC Profile</span>
+                  <div className={`flex justify-between py-1.5 border-b ${isLight ? 'border-slate-100 text-slate-600' : 'border-[rgba(255,255,255,0.04)] text-[#cbd5e1]'} font-normal`}>
                     <span>MAC Primitive</span>
-                    <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-extrabold`}>CMAC-AES128</strong>
+                    <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-semibold`}>CMAC-AES128</strong>
                   </div>
-                  <div className={`flex justify-between py-1.5 ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-bold`}>
+                  <div className={`flex justify-between py-1.5 ${isLight ? 'text-slate-600' : 'text-[#cbd5e1]'} font-normal`}>
                     <span>Truncation Length</span>
-                    <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-extrabold num-clean`}>32 bits (4 bytes)</strong>
+                    <strong className={`${isLight ? 'text-slate-900' : 'text-white'} font-semibold num-clean`}>32 bits (4 bytes)</strong>
                   </div>
                 </div>
               </div>
@@ -1375,7 +1375,7 @@ export default function App() {
             <div className={`flex items-center justify-between border-b ${isLight ? 'border-slate-200' : 'border-[rgba(255,255,255,0.06)]'} pb-3`}>
               <div className="flex items-center gap-2">
                 <Sparkles className={`w-4 h-4 ${isLight ? 'text-indigo-600' : 'text-purple-400'}`} />
-                <h3 className={`text-sm font-extrabold ${isLight ? 'text-slate-900' : 'text-white'}`}>ThreatPath AI Assistant</h3>
+                <h3 className={`text-sm font-semibold ${isLight ? 'text-slate-900' : 'text-white'} leading-none`}>ThreatPath AI Assistant</h3>
               </div>
               <button onClick={() => setShowAiModal(false)} className={`${isLight ? 'text-slate-500 hover:text-slate-900' : 'text-[#9f96ad] hover:text-white'} cursor-pointer`}>
                 <X className="w-4 h-4" />
@@ -1390,11 +1390,11 @@ export default function App() {
                 value={aiQuestion}
                 onChange={e => setAiQuestion(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleAiAsk()}
-                className={`bg-transparent flex-1 text-xs ${isLight ? 'text-slate-900 placeholder:text-slate-400' : 'text-white placeholder:text-[#6c637c]'} outline-none font-bold`}
+                className={`bg-transparent flex-1 text-xs ${isLight ? 'text-slate-900 placeholder:text-slate-400' : 'text-white placeholder:text-[#6c637c]'} outline-none font-medium`}
               />
               <button
                 onClick={() => handleAiAsk()}
-                className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-xs font-extrabold text-white cursor-pointer shadow-md"
+                className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-xs font-semibold text-white cursor-pointer shadow-md leading-none"
               >
                 Ask
               </button>
@@ -1412,8 +1412,8 @@ export default function App() {
                   className={`px-2.5 py-1 rounded-full ${
                     isLight 
                       ? 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200' 
-                      : 'bg-[#1b1726] hover:bg-[#251f33] text-[11px] font-bold text-[#9f96ad] hover:text-purple-200 border border-[rgba(255,255,255,0.05)]'
-                  } text-[11px] font-bold cursor-pointer transition text-left`}
+                      : 'bg-[#1b1726] hover:bg-[#251f33] text-[11px] font-medium text-[#9f96ad] hover:text-purple-200 border border-[rgba(255,255,255,0.05)]'
+                  } text-[11px] font-medium cursor-pointer transition text-left leading-normal`}
                 >
                   {q}
                 </button>
@@ -1421,11 +1421,11 @@ export default function App() {
             </div>
 
             {aiResponse && (
-              <div className={`p-3.5 rounded-xl ${isLight ? 'bg-indigo-50/70 border border-indigo-200 text-slate-800' : 'bg-[#0f0c17] border border-purple-500/20 text-purple-100'} text-xs leading-relaxed font-sans shadow-inner font-bold`}>
-                <div className={`font-extrabold text-xs ${isLight ? 'text-indigo-800' : 'text-purple-300'} mb-1 flex items-center gap-1.5`}>
+              <div className={`p-3.5 rounded-xl ${isLight ? 'bg-indigo-50/70 border border-indigo-200 text-slate-800' : 'bg-[#0f0c17] border border-purple-500/20 text-purple-100'} text-xs leading-relaxed font-sans shadow-inner`}>
+                <div className={`font-semibold text-xs ${isLight ? 'text-indigo-800' : 'text-purple-300'} mb-1 flex items-center gap-1.5 leading-snug`}>
                   <Check className={`w-3.5 h-3.5 ${isLight ? 'text-indigo-600' : 'text-purple-400'}`} /> ThreatPath Reasoning:
                 </div>
-                {aiResponse}
+                <p className="font-normal leading-relaxed">{aiResponse}</p>
               </div>
             )}
           </div>
