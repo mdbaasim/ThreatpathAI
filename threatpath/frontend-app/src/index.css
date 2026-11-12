@@ -222,6 +222,22 @@ code, pre {
   color: #0f172a !important;
 }
 
+.theme-light h1,
+.theme-light h2,
+.theme-light h3,
+.theme-light h4,
+.theme-light strong,
+.theme-light b,
+.theme-light th {
+  color: #0f172a !important;
+}
+
+.theme-light p,
+.theme-light td,
+.theme-light label {
+  color: #1e293b !important;
+}
+
 .theme-light .bg-3d-ambient {
   background: radial-gradient(ellipse 90% 60% at 50% 0%, #ffffff 0%, #f1f5f9 100%) !important;
 }
@@ -268,7 +284,7 @@ code, pre {
   transform: translateY(-2px);
 }
 
-/* Text Adaptations in Light Mode */
+/* Strict High-Contrast Dark Text in Light Mode */
 .theme-light .text-white {
   color: #0f172a !important;
 }
@@ -278,14 +294,22 @@ code, pre {
 }
 
 .theme-light .text-\[\#94a3b8\] {
-  color: #64748b !important;
+  color: #475569 !important;
 }
 
 .theme-light .text-\[\#9f96ad\] {
-  color: #64748b !important;
+  color: #475569 !important;
 }
 
 .theme-light .text-\[\#857b98\] {
+  color: #475569 !important;
+}
+
+.theme-light .text-\[\#7e7492\] {
+  color: #475569 !important;
+}
+
+.theme-light .text-\[\#6c637c\] {
   color: #64748b !important;
 }
 
@@ -293,8 +317,82 @@ code, pre {
   color: #0f172a !important;
 }
 
+/* High-Contrast Colored Accents in Light Mode */
+.theme-light .text-purple-100,
+.theme-light .text-purple-200,
+.theme-light .text-purple-300,
+.theme-light .text-\[\#c084fc\],
 .theme-light .text-\[\#c4b5fd\] {
-  color: #6d28d9 !important;
+  color: #6b21a8 !important;
+}
+
+.theme-light .text-pink-200,
+.theme-light .text-pink-300,
+.theme-light .text-pink-400 {
+  color: #9d174d !important;
+}
+
+.theme-light .text-cyan-200,
+.theme-light .text-cyan-300,
+.theme-light .text-cyan-300\/80 {
+  color: #0369a1 !important;
+}
+
+.theme-light .text-emerald-200,
+.theme-light .text-emerald-300,
+.theme-light .text-emerald-300\/80,
+.theme-light .text-emerald-400 {
+  color: #065f46 !important;
+}
+
+.theme-light .text-rose-300,
+.theme-light .text-rose-300\/80,
+.theme-light .text-rose-400 {
+  color: #991b1b !important;
+}
+
+.theme-light .text-amber-300,
+.theme-light .text-amber-300\/80,
+.theme-light .text-amber-400 {
+  color: #92400e !important;
+}
+
+/* Badge Backgrounds & High-Contrast Borders */
+.theme-light .bg-emerald-500\/15,
+.theme-light .bg-emerald-500\/20 {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(5, 150, 105, 0.4) !important;
+  color: #065f46 !important;
+}
+
+.theme-light .bg-rose-500\/15,
+.theme-light .bg-rose-500\/20,
+.theme-light .bg-rose-500\/25 {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  border-color: rgba(220, 38, 38, 0.4) !important;
+  color: #991b1b !important;
+}
+
+.theme-light .bg-cyan-500\/15,
+.theme-light .bg-cyan-500\/20 {
+  background-color: rgba(6, 182, 212, 0.15) !important;
+  border-color: rgba(2, 132, 199, 0.4) !important;
+  color: #0369a1 !important;
+}
+
+.theme-light .bg-purple-500\/15,
+.theme-light .bg-purple-500\/20,
+.theme-light .bg-purple-500\/25 {
+  background-color: rgba(168, 85, 247, 0.15) !important;
+  border-color: rgba(126, 34, 206, 0.4) !important;
+  color: #6b21a8 !important;
+}
+
+.theme-light .bg-amber-500\/15,
+.theme-light .bg-amber-500\/20 {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(217, 119, 6, 0.4) !important;
+  color: #92400e !important;
 }
 
 /* Border Adaptations */
@@ -365,17 +463,41 @@ code, pre {
 }
 
 /* Button & Badge Contrast in Light Mode */
-.theme-light .btn-ai-glow {
-  background: linear-gradient(90deg, #9333ea 0%, #db2777 100%) !important;
+.theme-light .btn-ai-glow,
+.theme-light .btn-ai-glow span,
+.theme-light .btn-ai-glow svg {
   color: #ffffff !important;
-  box-shadow: 0 4px 20px -2px rgba(219, 39, 119, 0.35) !important;
 }
 
 .theme-light .btn-glow-beam {
   background: radial-gradient(ellipse at center, rgba(219, 39, 119, 0.4) 0%, rgba(147, 51, 234, 0.25) 40%, transparent 75%) !important;
 }
 
-/* Table Hover & Striping in Light Mode */
+.theme-light button.bg-purple-600 {
+  background-color: #6d28d9 !important;
+  color: #ffffff !important;
+}
+
+.theme-light button.bg-purple-600:hover {
+  background-color: #5b21b6 !important;
+}
+
+.theme-light button.bg-\[\#1d172e\] {
+  background-color: #e2e8f0 !important;
+  color: #334155 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.theme-light button.bg-\[\#1d172e\]:hover {
+  background-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+/* Table Text & Layout in Light Mode */
+.theme-light table {
+  color: #0f172a !important;
+}
+
 .theme-light tbody tr:hover {
   background-color: rgba(241, 245, 249, 0.8) !important;
 }
@@ -386,4 +508,5 @@ code, pre {
 
 .theme-light .table-fixed-align td {
   border-color: rgba(226, 232, 240, 0.8) !important;
+  color: #1e293b !important;
 }
