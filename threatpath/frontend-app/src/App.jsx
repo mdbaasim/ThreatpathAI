@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   Activity, Layers, ShieldAlert, Network, Terminal, Settings, BookOpen,
   Play, ShieldCheck, AlertTriangle, Sparkles, Menu, X,
-  Check, Radio, RefreshCw, Search, ArrowRight, Shield, Pause, PlayCircle
+  Check, Radio, RefreshCw, Search, ArrowRight, Shield, Pause, PlayCircle,
+  Sun, Moon
 } from 'lucide-react';
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer
@@ -81,6 +82,7 @@ export default function App() {
   const [activeNav, setActiveNav] = useState('dashboard');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [timeRange, setTimeRange] = useState('LIVE');
+  const [theme, setTheme] = useState('light');
   
   // App Boot / Home Launch Screen State
   const [showHomeLaunch, setShowHomeLaunch] = useState(false);
@@ -381,7 +383,7 @@ export default function App() {
     : (TIME_DATA[timeRange] || TIME_DATA['6M']);
 
   return (
-    <div className="h-screen w-screen bg-[#0a0910] text-[#f6f4fa] flex flex-row overflow-hidden select-none relative font-sans">
+    <div className={`h-screen w-screen ${theme === 'light' ? 'theme-light' : 'bg-[#0a0910] text-[#f6f4fa]'} flex flex-row overflow-hidden select-none relative font-sans`}>
       
       {/* 3D Ambient Lighting Background */}
       <div className="bg-3d-ambient">
@@ -580,14 +582,39 @@ export default function App() {
             </button>
           </div>
 
-          {/* Ask AI Pill */}
-          <button
-            onClick={() => setShowAiModal(true)}
-            className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181426] border border-purple-500/30 hover:border-purple-400/60 text-xs font-extrabold text-purple-200 hover:text-white transition cursor-pointer shadow-lg shadow-purple-900/10 shrink-0"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-            <span>Ask ThreatPath AI anything</span>
-          </button>
+          {/* Header Controls: Theme Mode Toggle & Ask AI */}
+          <div className="flex items-center gap-2.5">
+            <button
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-extrabold transition cursor-pointer shadow-sm shrink-0 ${
+                theme === 'light'
+                  ? 'bg-slate-100 hover:bg-slate-200 text-indigo-700 border-indigo-300'
+                  : 'bg-[#181426] hover:bg-[#221c36] text-purple-200 border-purple-500/30'
+              }`}
+              title="Toggle between 3D Light Mode and Dark Mode"
+            >
+              {theme === 'light' ? (
+                <>
+                  <Moon className="w-3.5 h-3.5 text-indigo-600" />
+                  <span>Dark Mode</span>
+                </>
+              ) : (
+                <>
+                  <Sun className="w-3.5 h-3.5 text-amber-400" />
+                  <span>3D Light Mode</span>
+                </>
+              )}
+            </button>
+
+            {/* Ask AI Pill */}
+            <button
+              onClick={() => setShowAiModal(true)}
+              className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#181426] border border-purple-500/30 hover:border-purple-400/60 text-xs font-extrabold text-purple-200 hover:text-white transition cursor-pointer shadow-lg shadow-purple-900/10 shrink-0"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+              <span>Ask ThreatPath AI anything</span>
+            </button>
+          </div>
 
         </header>
 

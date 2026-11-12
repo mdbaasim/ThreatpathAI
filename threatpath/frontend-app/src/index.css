@@ -213,3 +213,177 @@ code, pre {
   color: #f5edff;
   box-shadow: 0 0 16px -2px rgba(168, 85, 247, 0.25);
 }
+
+/* ========================================================= */
+/* 3D EXECUTIVE LIGHT MODE (OPTION B) */
+/* ========================================================= */
+.theme-light {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.theme-light .bg-3d-ambient {
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, #ffffff 0%, #f1f5f9 100%) !important;
+}
+
+.theme-light .orb-1 {
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.08) 50%, transparent 70%) !important;
+}
+
+.theme-light .orb-2 {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(217, 70, 239, 0.06) 50%, transparent 75%) !important;
+}
+
+.theme-light .orb-3 {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, transparent 65%) !important;
+}
+
+.theme-light .bg-grid-3d {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 85%) !important;
+}
+
+/* 3D Glass Surface in Light Mode */
+.theme-light .glass-panel-3d {
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 
+    0 16px 36px -10px rgba(15, 23, 42, 0.08),
+    0 1px 3px 0 rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  color: #0f172a !important;
+}
+
+.theme-light .glass-panel-3d:hover {
+  border-color: rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 
+    0 24px 50px -10px rgba(15, 23, 42, 0.13),
+    0 0 24px -2px rgba(56, 189, 248, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+  transform: translateY(-2px);
+}
+
+/* Text Adaptations in Light Mode */
+.theme-light .text-white {
+  color: #0f172a !important;
+}
+
+.theme-light .text-\[\#cbd5e1\] {
+  color: #334155 !important;
+}
+
+.theme-light .text-\[\#94a3b8\] {
+  color: #64748b !important;
+}
+
+.theme-light .text-\[\#9f96ad\] {
+  color: #64748b !important;
+}
+
+.theme-light .text-\[\#857b98\] {
+  color: #64748b !important;
+}
+
+.theme-light .text-\[\#f6f4fa\] {
+  color: #0f172a !important;
+}
+
+.theme-light .text-\[\#c4b5fd\] {
+  color: #6d28d9 !important;
+}
+
+/* Border Adaptations */
+.theme-light .border-\[rgba\(255\,255\,255\,0\.06\)\],
+.theme-light .border-\[rgba\(255\,255\,255\,0\.07\)\],
+.theme-light .border-\[rgba\(255\,255\,255\,0\.08\)\] {
+  border-color: rgba(226, 232, 240, 0.95) !important;
+}
+
+/* Header & Sidebar in Light Mode */
+.theme-light header {
+  background: rgba(255, 255, 255, 0.90) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04) !important;
+}
+
+.theme-light aside {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 4px 0 25px -3px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Nav Active Pill */
+.theme-light .nav-item-active {
+  background: linear-gradient(90deg, #ede9fe 0%, #e0e7ff 100%) !important;
+  border: 1px solid rgba(129, 140, 248, 0.4) !important;
+  color: #4338ca !important;
+  box-shadow: 0 4px 14px -2px rgba(99, 102, 241, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Inner Background Blocks in Light Mode */
+.theme-light .bg-\[\#14101e\],
+.theme-light .bg-\[\#151022\],
+.theme-light .bg-\[\#181426\],
+.theme-light .bg-\[\#191526\],
+.theme-light .bg-\[\#1a1526\],
+.theme-light .bg-\[\#1b162a\],
+.theme-light .bg-\[\#1d172e\],
+.theme-light .bg-\[\#0e0c15\] {
+  background-color: #f1f5f9 !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+}
+
+/* Top 3 Cards Light Mode 3D Gradients */
+.theme-light .bg-gradient-to-br.from-\[\#0c1a2e\]\/90 {
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.95) 0%, rgba(240, 249, 255, 0.9) 100%) !important;
+  border-color: rgba(14, 165, 233, 0.35) !important;
+  box-shadow: 0 16px 36px -10px rgba(14, 165, 233, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+.theme-light .bg-gradient-to-b.from-\[\#1c1236\]\/90 {
+  background: linear-gradient(180deg, rgba(245, 243, 255, 0.95) 0%, rgba(237, 233, 254, 0.9) 100%) !important;
+  border-color: rgba(168, 85, 247, 0.35) !important;
+  box-shadow: 0 16px 36px -10px rgba(168, 85, 247, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+.theme-light .bg-gradient-to-br.from-\[\#2a101f\]\/90 {
+  background: linear-gradient(135deg, rgba(255, 241, 242, 0.95) 0%, rgba(254, 242, 242, 0.9) 100%) !important;
+  border-color: rgba(244, 63, 94, 0.35) !important;
+  box-shadow: 0 16px 36px -10px rgba(244, 63, 94, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+/* Centered HUD Capsule in Light Mode */
+.theme-light .hidden.md\:flex.items-center.gap-3.px-3\.5 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(203, 213, 225, 0.9) !important;
+  box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+/* Button & Badge Contrast in Light Mode */
+.theme-light .btn-ai-glow {
+  background: linear-gradient(90deg, #9333ea 0%, #db2777 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 20px -2px rgba(219, 39, 119, 0.35) !important;
+}
+
+.theme-light .btn-glow-beam {
+  background: radial-gradient(ellipse at center, rgba(219, 39, 119, 0.4) 0%, rgba(147, 51, 234, 0.25) 40%, transparent 75%) !important;
+}
+
+/* Table Hover & Striping in Light Mode */
+.theme-light tbody tr:hover {
+  background-color: rgba(241, 245, 249, 0.8) !important;
+}
+
+.theme-light .table-fixed-align th {
+  color: #475569 !important;
+}
+
+.theme-light .table-fixed-align td {
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
