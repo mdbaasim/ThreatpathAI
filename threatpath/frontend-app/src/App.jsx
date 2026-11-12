@@ -1062,8 +1062,8 @@ export default function App() {
                         onClick={() => handleRunTest(t.id, t.status !== 'Mitigated')}
                         className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition cursor-pointer whitespace-nowrap shrink-0 inline-flex items-center justify-center min-w-[80px] leading-none ${
                           isLight 
-                            ? 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm' 
-                            : 'bg-purple-600 hover:bg-purple-500 text-white'
+                            ? 'bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-300' 
+                            : 'bg-[#1d172e] hover:bg-[#251e3a] text-slate-300 hover:text-white border border-[rgba(255,255,255,0.1)]'
                         }`}
                       >
                         {t.status === 'Mitigated' ? 'Re-Test' : 'Execute Test'}
