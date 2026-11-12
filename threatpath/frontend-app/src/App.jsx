@@ -414,7 +414,7 @@ export default function App() {
               </div>
               <div className="p-3.5 rounded-xl bg-[#151022] border border-[rgba(255,255,255,0.07)]">
                 <span className="text-[11px] font-bold text-[#94a3b8] block uppercase">Safety Baseline</span>
-                <strong className="text-pink-300 font-extrabold text-sm num-clean">ASIL-D Certified</strong>
+                <strong className="text-pink-300 font-extrabold text-sm num-clean">ASIL-D Target Node (vcan0)</strong>
               </div>
             </div>
 

@@ -1,10 +1,13 @@
-from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi import FastAPI, HTTPException, UploadFile, File, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, StreamingResponse
 from typing import List, Dict, Any, Optional
+from collections import defaultdict
 import os
 import json
+import time
+import asyncio
 
 from models import (
     Component, Connection, Threat, AttackPath,
@@ -14,14 +17,100 @@ from sample_data import SAMPLE_COMPONENTS, SAMPLE_CONNECTIONS, SAMPLE_THREATS, S
 from graph_engine import GraphEngine
 from simulator import SimulationEngine
 from live_bus import live_bus
-from fastapi.responses import StreamingResponse
-import asyncio
+
+# Environment Settings
+ENABLE_DOCS = os.getenv("ENABLE_DOCS", "false").lower() in ("true", "1")
 
 app = FastAPI(
     title="ThreatPath API",
-    description="AI-Assisted Threat Modeling & Security Validation for Embedded Systems",
-    version="1.0.0"
+    description="AI-Assisted Threat Modeling & Security Validation for Embedded Systems (ISO/SAE 21434 & UNECE R155)",
+    version="1.0.0",
+    docs_url="/docs" if ENABLE_DOCS else None,
+    redoc_url=None,
+    openapi_url="/openapi.json" if ENABLE_DOCS else None,
 )
+
+if not ENABLE_DOCS:
+    @app.get("/docs", include_in_schema=False)
+    @app.get("/openapi.json", include_in_schema=False)
+    @app.get("/redoc", include_in_schema=False)
+    def protected_docs():
+        raise HTTPException(status_code=404, detail="API schema and documentation are disabled in production mode.")
+
+# ----------------------------------------------------
+# RATE LIMITING & SECURITY MIDDLEWARE
+# ----------------------------------------------------
+RATE_LIMIT_WINDOW = 60  # seconds
+RATE_LIMIT_MAX_POSTS = 30  # max mutation actions per minute per client IP
+ip_post_timestamps = defaultdict(list)
+
+@app.middleware("http")
+async def security_and_cache_middleware(request: Request, call_next):
+    client_ip = request.client.host if request.client else "unknown"
+    now = time.time()
+    
+    # Handle HEAD requests cleanly (prevent 405 Method Not Allowed)
+    is_head = (request.method == "HEAD")
+    if is_head:
+        request.scope["method"] = "GET"
+
+    # Rate limiting on mutating endpoints (POST, PUT, DELETE)
+    if request.method in ("POST", "PUT", "DELETE") and request.url.path.startswith("/api/"):
+        # Filter timestamps within current sliding window
+        valid_timestamps = [ts for ts in ip_post_timestamps[client_ip] if now - ts < RATE_LIMIT_WINDOW]
+        if len(valid_timestamps) >= RATE_LIMIT_MAX_POSTS:
+            return Response(
+                content=json.dumps({
+                    "detail": "Demo rate limit exceeded (maximum 30 simulation actions per minute). Please wait 30 seconds."
+                }),
+                status_code=429,
+                media_type="application/json",
+                headers={
+                    "Retry-After": "30",
+                    "X-RateLimit-Limit": str(RATE_LIMIT_MAX_POSTS),
+                    "X-RateLimit-Remaining": "0"
+                }
+            )
+        valid_timestamps.append(now)
+        ip_post_timestamps[client_ip] = valid_timestamps
+
+    response: Response = await call_next(request)
+
+    # 1. Enterprise Security Headers
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=(), payment=()"
+    response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+        "font-src 'self' https://fonts.gstatic.com data:; "
+        "img-src 'self' data: https:; "
+        "connect-src 'self' https://threatpathai.onrender.com wss://threatpathai.onrender.com http://localhost:* ws://localhost:*; "
+        "frame-ancestors 'none';"
+    )
+
+    # 2. Optimized Caching Strategy
+    req_path = request.url.path
+    if req_path.startswith("/assets/"):
+        # Long-lived cache for hashed static JS/CSS assets
+        response.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+    elif req_path in ("/", "/index.html"):
+        # Root index.html must revalidate to serve updated hash references
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+    elif req_path.startswith("/api/"):
+        # Dynamic API data must not be stale-cached
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate"
+
+    if is_head:
+        response.body = b""
+
+    return response
 
 # Enable CORS for frontend integration
 app.add_middleware(
@@ -98,54 +187,40 @@ def get_threats():
 def get_attack_paths():
     dynamic_paths = graph_engine.find_all_attack_paths(
         entry_points=["TCU_01", "OBD_PORT"],
-        target_nodes=["ESC_BRAKE", "ECM_01"]
+        critical_targets=["ESC_BRAKE", "ECM_01"]
     )
-    return {
-        "preconfigured_scenarios": [p.model_dump() for p in SAMPLE_ATTACK_PATHS],
-        "graph_computed_paths": dynamic_paths
-    }
+    if dynamic_paths:
+        return dynamic_paths
+    return SAMPLE_ATTACK_PATHS
 
-@app.get("/api/topology")
-def get_topology():
-    return graph_engine.get_topology_for_ui()
-
-@app.post("/api/simulate-test", response_model=TestExecutionResult)
-def run_simulation(req: TestExecutionRequest):
-    # Find threat
-    threat = next((t for t in threats_store if t.id == req.threat_id), None)
-    if not threat:
+@app.post("/api/simulation/execute", response_model=TestExecutionResult)
+def execute_test(request: TestExecutionRequest):
+    target_threat = next((t for t in threats_store if t.id == request.threat_id), None)
+    if not target_threat:
         raise HTTPException(status_code=404, detail="Threat not found")
         
-    result = simulator.execute_test(req.threat_id, req.apply_mitigation)
+    result = simulator.execute_test(
+        threat_id=target_threat.id,
+        target_node=target_threat.component_id,
+        attack_type=target_threat.category,
+        secoc_enabled=request.secoc_enabled
+    )
     
-    # Update threat state based on test outcome
-    if result.status == "CONFIRMED_EXPLOIT":
-        threat.status = "Confirmed Exploit"
-        threat.mitigation_applied = False
-        threat.evidence_log = f"Exploit verified at {result.timestamp}: {result.verdict}"
-        live_bus.set_attack(True, 15.0)
-        live_bus.toggle_secoc(False)
-    elif result.status == "VERIFIED_MITIGATED":
-        threat.status = "Mitigated"
-        threat.mitigation_applied = True
-        threat.evidence_log = f"Mitigation verified at {result.timestamp}: {result.verdict}"
-        live_bus.set_attack(False)
-        live_bus.toggle_secoc(True)
-        
+    # Update state based on test outcome
+    target_threat.status = "Mitigated" if result.status == "Blocked" else "Confirmed Exploit"
+    target_threat.remediation_status = "Verified Protected" if result.status == "Blocked" else "Vulnerable to Injection"
+    
     return result
 
-@app.post("/api/apply-mitigation/{threat_id}")
+@app.post("/api/simulation/apply-mitigation")
 def apply_mitigation(threat_id: str):
-    threat = next((t for t in threats_store if t.id == threat_id), None)
-    if not threat:
+    target_threat = next((t for t in threats_store if t.id == threat_id), None)
+    if not target_threat:
         raise HTTPException(status_code=404, detail="Threat not found")
     
-    threat.mitigation_applied = True
-    # Re-run simulation with mitigation
-    result = simulator.execute_test(threat_id, apply_mitigation=True)
-    threat.status = "Mitigated"
-    threat.evidence_log = f"Mitigation enforced & validated at {result.timestamp}."
-    return {"status": "success", "threat": threat, "test_result": result}
+    target_threat.status = "Mitigated"
+    target_threat.remediation_status = "Hardened (SecOC / Firewall Active)"
+    return {"status": "success", "threat": target_threat}
 
 @app.post("/api/reset-environment")
 def reset_environment():
@@ -226,8 +301,9 @@ async def stream_live_bus():
             await asyncio.sleep(0.4)
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
-# Mount frontend production build
-# Locate frontend production build
+# ==========================================
+# STATIC PRODUCTION ASSETS & ROUTING
+# ==========================================
 dist_candidates = [
     os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend-app", "dist")),
     os.path.abspath(os.path.join(os.getcwd(), "threatpath", "frontend-app", "dist")),
@@ -245,6 +321,20 @@ if dist_path:
     assets_dir = os.path.join(dist_path, "assets")
     if os.path.exists(assets_dir):
         app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+
+    @app.get("/favicon.svg")
+    def serve_favicon():
+        fav = os.path.join(dist_path, "favicon.svg")
+        if os.path.exists(fav):
+            return FileResponse(fav, media_type="image/svg+xml")
+        return Response(status_code=404)
+
+    @app.get("/robots.txt")
+    def serve_robots():
+        rob = os.path.join(dist_path, "robots.txt")
+        if os.path.exists(rob):
+            return FileResponse(rob, media_type="text/plain")
+        return Response("User-agent: *\nAllow: /\n", media_type="text/plain")
 
     @app.get("/")
     def serve_index():
