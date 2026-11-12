@@ -84,12 +84,12 @@ async def security_and_cache_middleware(request: Request, call_next):
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=(), payment=()"
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
     response.headers["Content-Security-Policy"] = (
-        "default-src 'self'; "
-        "script-src 'self' 'unsafe-inline'; "
+        "default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; "
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
         "font-src 'self' https://fonts.gstatic.com data:; "
-        "img-src 'self' data: https:; "
-        "connect-src 'self' https://threatpathai.onrender.com wss://threatpathai.onrender.com http://localhost:* ws://localhost:*; "
+        "img-src 'self' data: https: blob:; "
+        "connect-src *; "
         "frame-ancestors 'none';"
     )
 
