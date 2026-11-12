@@ -553,17 +553,17 @@ export default function App() {
           </div>
 
           {/* Real-Time Live Bus Status Capsule - CENTERED ACROSS ALL PAGES */}
-          <div className="hidden md:flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-[#181326] border border-[rgba(255,255,255,0.08)] text-xs font-bold shadow-lg shadow-purple-950/20 absolute left-1/2 -translate-x-1/2 pointer-events-auto">
+          <div className="hidden md:flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-[#181326] border border-purple-500/30 text-xs font-bold shadow-lg shadow-purple-950/25 absolute left-1/2 -translate-x-1/2 pointer-events-auto">
             <span className="flex items-center gap-1.5 text-emerald-400 font-extrabold num-clean">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               vcan0 LIVE
             </span>
             <span className="text-[#64748b]">|</span>
-            <span className={`num-clean font-extrabold ${liveBus.bus_load_pct > 70 ? 'text-rose-400 animate-pulse' : 'text-purple-300'}`}>
+            <span className={`num-clean font-extrabold ${liveBus.bus_load_pct > 70 ? 'text-rose-400 animate-pulse' : 'text-amber-300'}`}>
               Load: {liveBus.bus_load_pct}%
             </span>
             <span className="text-[#64748b]">|</span>
-            <span className="num-clean font-extrabold text-[#cbd5e1]">
+            <span className="num-clean font-extrabold text-cyan-300">
               {liveBus.frames_per_sec} fps
             </span>
             <span className="text-[#64748b]">|</span>
@@ -614,10 +614,10 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
                 {/* CARD 1: ECU Inventory & Live Packets */}
-                <div className="glass-panel-3d p-6 rounded-2xl flex flex-col justify-between min-h-[200px]">
+                <div className="glass-panel-3d p-6 rounded-2xl flex flex-col justify-between min-h-[200px] bg-gradient-to-br from-[#0c1a2e]/90 via-[#0e1626]/80 to-[#141b2c]/90 border border-cyan-500/35 shadow-lg shadow-cyan-950/20">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-extrabold uppercase tracking-wider text-[#cbd5e1]">ECU Inventory</span>
-                    <span className="px-2.5 py-1 rounded-full text-xs font-extrabold bg-[#1b162a] text-purple-300 border border-purple-500/30 num-clean">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-cyan-300">ECU Inventory</span>
+                    <span className="px-2.5 py-1 rounded-full text-xs font-extrabold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 num-clean">
                       CAN-HS 500k
                     </span>
                   </div>
@@ -635,7 +635,7 @@ export default function App() {
                   <div className="pt-3 border-t border-[rgba(255,255,255,0.06)] grid grid-cols-2 gap-2 text-xs">
                     <div>
                       <span className="text-[#94a3b8] block text-xs font-bold">Total Packets Processed</span>
-                      <strong className="text-white font-extrabold num-clean">{liveBus.total_frames_sent.toLocaleString()}</strong>
+                      <strong className="text-cyan-200 font-extrabold num-clean">{liveBus.total_frames_sent.toLocaleString()}</strong>
                     </div>
                     <div>
                       <span className="text-[#94a3b8] block text-xs font-bold">Intrusion Alerts</span>
@@ -647,7 +647,7 @@ export default function App() {
                 </div>
 
                 {/* CARD 2: Decisions Powered by Data */}
-                <div className="glass-panel-3d p-6 rounded-2xl flex flex-col justify-between min-h-[200px] bg-gradient-to-b from-[#181426] to-[#231536] border border-purple-500/30 relative overflow-hidden">
+                <div className="glass-panel-3d p-6 rounded-2xl flex flex-col justify-between min-h-[200px] bg-gradient-to-b from-[#1c1236]/90 via-[#23153d]/85 to-[#2c1242]/90 border border-purple-500/40 relative overflow-hidden shadow-lg shadow-purple-950/30">
                   <div>
                     <h3 className="text-lg font-extrabold text-white tracking-tight">
                       Decisions Powered by Data
@@ -672,10 +672,10 @@ export default function App() {
                 </div>
 
                 {/* CARD 3: Target ECU Status */}
-                <div className="glass-panel-3d p-6 rounded-2xl flex flex-col justify-between min-h-[200px]">
+                <div className="glass-panel-3d p-6 rounded-2xl flex flex-col justify-between min-h-[200px] bg-gradient-to-br from-[#2a101f]/90 via-[#1d1226]/80 to-[#181128]/90 border border-rose-500/35 shadow-lg shadow-rose-950/20">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-extrabold uppercase tracking-wider text-[#cbd5e1]">Target ECU Status</span>
-                    <span className="px-2.5 py-1 rounded-full text-xs font-extrabold text-pink-300 bg-pink-500/15 border border-pink-500/30 num-clean">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-rose-300">Target ECU Status</span>
+                    <span className="px-2.5 py-1 rounded-full text-xs font-extrabold text-rose-300 bg-rose-500/15 border border-rose-500/30 num-clean">
                       ASIL-D
                     </span>
                   </div>
@@ -994,13 +994,13 @@ export default function App() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {[
-                    { step: "Step 1: Cellular Ingress", desc: "Unauthenticated UDP 13400 DoIP socket exploit on Telematics Unit.", cwe: "CWE-306" },
-                    { step: "Step 2: Gateway Pivot", desc: "Cross-domain lateral hop across Central Gateway Ethernet bridge.", cwe: "CWE-284" },
-                    { step: "Step 3: CAN Injection", desc: "Direct CAN ID 0x020 brake deceleration frame injection.", cwe: "CWE-345" }
+                    { step: "Step 1: Cellular Ingress", desc: "Unauthenticated UDP 13400 DoIP socket exploit on Telematics Unit.", cwe: "CWE-306", color: "bg-gradient-to-b from-[#0c1a2e]/90 to-[#0e0c15] border border-cyan-500/35", tagColor: "text-cyan-300" },
+                    { step: "Step 2: Gateway Pivot", desc: "Cross-domain lateral hop across Central Gateway Ethernet bridge.", cwe: "CWE-284", color: "bg-gradient-to-b from-[#1b122e]/90 to-[#0e0c15] border border-purple-500/35", tagColor: "text-purple-300" },
+                    { step: "Step 3: CAN Injection", desc: "Direct CAN ID 0x020 brake deceleration frame injection.", cwe: "CWE-345", color: "bg-gradient-to-b from-[#26101c]/90 to-[#0e0c15] border border-rose-500/35", tagColor: "text-rose-300" }
                   ].map((s, idx) => (
-                    <div key={idx} className="p-5 rounded-xl bg-[#0e0c15] border border-[rgba(255,255,255,0.06)] flex flex-col justify-between">
+                    <div key={idx} className={`p-5 rounded-xl ${s.color} flex flex-col justify-between`}>
                       <div>
-                        <span className="text-xs font-extrabold text-purple-300 block">{s.cwe}</span>
+                        <span className={`text-xs font-extrabold ${s.tagColor} block`}>{s.cwe}</span>
                         <strong className="text-sm font-extrabold text-white block mt-1">{s.step}</strong>
                         <p className="text-xs text-[#cbd5e1] font-bold mt-2 leading-relaxed">{s.desc}</p>
                       </div>
@@ -1033,25 +1033,25 @@ export default function App() {
 
               {/* Real-time Hardware Telemetry Gauges */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="p-4 rounded-xl bg-[#14101e] border border-[rgba(255,255,255,0.06)]">
-                  <span className="text-[11px] font-bold text-[#94a3b8] block uppercase">Bus Load</span>
-                  <strong className={`text-xl font-extrabold num-clean ${liveBus.bus_load_pct > 70 ? 'text-rose-400' : 'text-purple-300'}`}>
+                <div className="p-4 rounded-xl bg-gradient-to-br from-amber-950/30 to-[#14101e] border border-amber-500/35">
+                  <span className="text-[11px] font-bold text-amber-300/80 block uppercase">Bus Load</span>
+                  <strong className={`text-xl font-extrabold num-clean ${liveBus.bus_load_pct > 70 ? 'text-rose-400' : 'text-amber-300'}`}>
                     {liveBus.bus_load_pct}%
                   </strong>
                 </div>
-                <div className="p-4 rounded-xl bg-[#14101e] border border-[rgba(255,255,255,0.06)]">
-                  <span className="text-[11px] font-bold text-[#94a3b8] block uppercase">Current Velocity</span>
-                  <strong className="text-xl font-extrabold text-white num-clean">{liveBus.frames_per_sec} frames/s</strong>
+                <div className="p-4 rounded-xl bg-gradient-to-br from-cyan-950/30 to-[#14101e] border border-cyan-500/35">
+                  <span className="text-[11px] font-bold text-cyan-300/80 block uppercase">Current Velocity</span>
+                  <strong className="text-xl font-extrabold text-cyan-300 num-clean">{liveBus.frames_per_sec} frames/s</strong>
                 </div>
-                <div className="p-4 rounded-xl bg-[#14101e] border border-[rgba(255,255,255,0.06)]">
-                  <span className="text-[11px] font-bold text-[#94a3b8] block uppercase">Cryptographic Layer</span>
+                <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-950/30 to-[#14101e] border border-emerald-500/35">
+                  <span className="text-[11px] font-bold text-emerald-300/80 block uppercase">Cryptographic Layer</span>
                   <strong className={`text-xl font-extrabold ${liveBus.is_secoc_active ? 'text-emerald-400' : 'text-rose-400'}`}>
                     {liveBus.is_secoc_active ? 'AUTOSAR SecOC' : 'Disabled (Raw CAN)'}
                   </strong>
                 </div>
-                <div className="p-4 rounded-xl bg-[#14101e] border border-[rgba(255,255,255,0.06)]">
-                  <span className="text-[11px] font-bold text-[#94a3b8] block uppercase">Intrusion Detections</span>
-                  <strong className="text-xl font-extrabold text-pink-400 num-clean">{liveBus.anomalies_detected} Alerted</strong>
+                <div className="p-4 rounded-xl bg-gradient-to-br from-rose-950/30 to-[#14101e] border border-rose-500/35">
+                  <span className="text-[11px] font-bold text-rose-300/80 block uppercase">Intrusion Detections</span>
+                  <strong className="text-xl font-extrabold text-rose-400 num-clean">{liveBus.anomalies_detected} Alerted</strong>
                 </div>
               </div>
 
